@@ -3,9 +3,9 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GSAP Advanced Text Animation</title>
+    <title>GSAP Animated Borders</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
- 
+
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
@@ -17,36 +17,113 @@
         font-family: "Poppins", sans-serif;
         overflow: hidden;
         background: rgb(255, 255, 255);
-       
       }
-  
+
       .app {
         display: flex;
         justify-content: center;
         align-items: center;
         flex-direction: column;
       }
-      .events-container{
+      .events-container {
         width: 100%;
       }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        list-style: none;
+      }
+      .card-container,
+      .card-parent {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 30px;
+      }
+      .card-parent li {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       
+
+        border-radius: 20px;
+        flex-direction: column;
+        width: 450px;
+        padding: 20px;
+        height: 250px;
+        position: relative;
+        overflow: hidden;
+        transition: border-radius 0.5s ease-in-out;
+        background: url(../volt.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+
+      .card-parent li:hover {
+        animation: borderAnimation 3s infinite alternate;
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      }
+
+      li .bottom-protion {
+        display: flex;
+        justify-content: start;
+        align-items: start;
+        gap: 10px;
+        position: absolute;
+        left: 20px;
+        bottom: 30px;
+        flex-direction: column;
+        color: #fff;
+        z-index: 1;
+
+      }
+      .label{
+        position: absolute;
+      
+        top: 20px;
+        left: 0;
+        width: 150px;
+        height: 30px;
+        display: flex;
+        justify-content: center;
+        border-top-right-radius: 10px;
+        border-bottom-right-radius: 10px;
+        align-items: center;
+        background-color: #36e60a;
+      }
+      .shadow {
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to top, rgb(11, 136, 29) 0%, rgba(72, 159, 130, 0.5) 50%, rgba(72, 159, 130, 0) 100%);
+      }
+      
+
     </style>
   </head>
   <body class="body">
     <div class="app">
-      <h1 class="text-container" id="text"></h1>
-      <div class="events-container" >
-        <div class="event-card">
-          <p>TRENDING EVENTS</p>
-          <h2>SPOTLIGHT X ONE DAY ONE MINUTE</h2>
-          <p>
-            Spotlight is a dunamic platfomr where aspiring filmmakers meet
-            industry experts, gain insights, refine therir craft, and explore
-            cinematic innovation
-          </p>
-        </div>
+      <div class="card-container">
+        <ul class="card-parent">
+          <li>
+            <div class="top-portion">
+              <img src="../image.png" alt="" />
+            </div>
+            <b class="label">General Events</b>
+            <div class="bottom-protion">
+              <h2>Group Dance</h2>
+              <p>Sri Valliappa Auditorium</p>
+            </div>
+            <div class="shadow"></div>
+          </li>
+        </ul>
       </div>
     </div>
-
- 
   </body>
 </html>
