@@ -1,625 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Document</title>
-    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Colorful Animated Background</title>
     <style>
-      body {
-        display: flex;
-        gap: 90px;
-        align-items: center;
-        flex-wrap: wrap;
-        flex-grow: 1;
-      }
-
-      .event-card {
-        position: relative;
-        width: 400px;
-        height: 300px;
-        float: left;
-      }
-
-      .front,
-      .front {
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        position: absolute;
-        transition: all 0.3s ease;
-      }
-
-      .front .top-portion img,
-      .front .top-portion img {
-        width: 100%;
-        height: 100%;
-      }
-
-      .back {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background: rgb(110, 0, 255);
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.763) 0%,
-          rgb(131, 74, 235) 100%
-        );
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        z-index: -2;
-
-        box-sizing: border-box;
-      }
-
-      .pname {
-        font-size: 24px;
-        font-weight: bold;
-      }
-
-      .description {
-        margin: 20px 0px;
-      }
-
-      .back-content {
-        padding: 0px 10px;
-        transition: all 0.5s ease;
-        transform: scale(0);
-        opacity: 0;
-      }
-
-      .top-portion {
-        height: 100%;
-      }
-
-      .event-card:hover .front {
-        width: 200px;
-        height: 100px;
-        left: calc(50% - 100px);
-        top: calc(10% - 70px);
-      }
-
-      .event-card:hover .front img,
-      .event-card:hover .front img {
-        box-shadow: 0px 0px 0px 6px white;
-        z-index: 1;
-      }
-
-      .event-card:hover .back-content {
-        transform: scale(1);
-        opacity: 1;
-      }
-      .event-card .back {
-        border-radius: 10px;
-        transition: all 0.1s ease;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        list-style: none;
-      }
-      .card-event-card,
-      .front,
-      .front {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 30px;
-      }
-
-      .bottom-protion {
-        display: flex;
-        justify-content: start;
-        align-items: start;
-
-        position: absolute;
-        left: 20px;
-        bottom: 10px;
-        flex-direction: column;
-        color: #fff;
-        z-index: 1;
-      }
-      .label {
-        position: absolute;
-
-        top: 20px;
-        left: 0;
-        width: 150px;
-        height: 30px;
-        display: flex;
-        justify-content: center;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-        align-items: center;
-        background-color: #e6d00a;
-      }
-      .shadow {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          to top,
-          rgb(94, 11, 136) 0%,
-          rgba(137, 0, 234, 0.5) 40%,
-          rgba(100, 72, 159, 0) 100%
-        );
-      }
-
-      .event-card:hover .label,
-      .event-card:hover .shadow,
-      .event-card:hover .bottom-protion {
-        display: none;
-      }
-      body {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-       
-      }
-
-      .button {
-        padding: 15px 30px;
-        border-radius: 30px;
-        border: 1px solid #fff;
-        position: relative;
-        z-index: 2;
-        transition: color 0.3s linear;
-        overflow: hidden;
-        font-size: 18px;
-        font-weight: bold;
-        font-family: sans-serif;
-      }
-      .button::before {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0%;
-        left: -100%;
-        background-color: gold;
-        transition: all 0.3s linear;
-        z-index: -1;
-      }
-      .button::after {
-        content: "";
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        top: 0%;
-        right: -100%;
-        background-color: rgb(0, 136, 255);
-        transition: all 0.3s linear;
-        z-index: -1;
-      }
-      @keyframes hover {
-        0% {
-          right: -100%;
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
         }
-        100% {
-          right: 0;
-        }
-      }
-      .button:hover::before {
-        left: 0%;
-      }
-      .button:hover::after {
-        animation: hover 0.3s linear 0.3s;
-        animation-fill-mode: forwards;
-      }
-      .button:hover {
-        color: #111;
-      } /*# sourceMappingURL=hover3.css.map */
-      .event-container {
-        display: flex;
-        padding: 10px;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 30px;
-        row-gap: 50px;
-      }
-      .back-2 {
-        background: rgb(0, 183, 255);
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.763) 0%,
-          rgb(74, 198, 235) 100%
-        ) !important;
-      }
-      .back-3 {
-        background: rgb(110, 0, 255);
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.763) 0%,
-          rgb(235, 122, 74) 100%
-        ) !important;
-      }
-      .back-4 {
-        background: rgb(110, 0, 255);
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.763) 0%,
-          rgb(20, 75, 241) 100%
-        );
-      }
-      .back-5 {
-        background: rgb(110, 0, 255);
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.763) 0%,
-          rgb(235, 74, 74) 100%
-        );
-      }
-      .back-6 {
-        background: rgb(110, 0, 255);
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.763) 0%,
-          rgb(23, 86, 213) 100%
-        );
-      }
-      .back-8 {
-        background: rgb(110, 0, 255);
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.763) 0%,
-          rgb(74, 235, 138) 100%
-        );
-      }
-      .back-9 {
-        background: rgb(110, 0, 255);
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.763) 0%,
-          rgb(229, 114, 42) 100%
-        );
-      }
-      .back-10 {
-        background: rgb(110, 0, 255);
-        background: radial-gradient(
-          circle,
-          rgba(255, 255, 255, 0.763) 0%,
-          rgb(44, 39, 54) 100%
-        );
-      }
-      .shadow-2,
-      .shadow-3,
-      .shadow-4,
-      .shadow-5,
-      .shadow-6,
-      .shadow-7,
-      .shadow-8,
-      .shadow-9,
-      .shadow-10 {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-      }
-      .front .shadow-3 {
-        background: linear-gradient(
-          to top,
-          rgb(20, 19, 41) 0%,
-          rgba(0, 144, 234, 0.5) 40%,
-          rgba(100, 72, 159, 0) 100%
-        ) !important;
-      }
 
-      .event-card:hover .label,
-      .event-card:hover .shadow,
-      .shadow-2,
-      .shadow-3,
-      .shadow-4,
-      .shadow-5,
-      .shadow-6,
-      .shadow-7,
-      .shadow-8,
-      .shadow-9,
-      .shadow-10 .event-card:hover .bottom-protion {
-        display: none;
-      }
-      .event-container{
-        overflow-x: hidden;
-        overflow-y: scroll;
-        scrollbar-width: none;
-      }
+        #canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
     </style>
-  </head>
-
-  <body>
-    <div class="event-container">
-      <li class="event-card" data-aos="fade-right">
-        <div class="front">
-          <div class="top-portion">
-            <img src="../img1.png" alt="" />
-          </div>
-          <b class="label">General Events</b>
-          <div class="bottom-protion">
-            <h2>Group Dance</h2>
-            <p>Sri Valliappa Auditorium</p>
-          </div>
-          <div class="shadow"></div>
-        </div>
-        <div class="back">
-          <div class="back-content">
-            <div class="pname">Group Dance</div>
-            <div class="description">Rules</div>
-            <div class="btn">
-              <button class="button">Register Now</button>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li class="event-card" data-aos="fade-left">
-        <div class="front">
-          <div class="top-portion">
-            <img src="../solo.png" alt="" />
-          </div>
-          <b class="label">General Events</b>
-          <div class="bottom-protion">
-            <h2>Solo Dance</h2>
-            <p>PG Auditorium</p>
-          </div>
-          <div class="shadow"></div>
-        </div>
-        <div class="back back-2">
-          <div class="back-content">
-            <div class="pname">Solo Dance</div>
-            <div class="description">Rules</div>
-            <div class="btn">
-              <button class="button">Register Now</button>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li class="event-card" data-aos="zoom-in">
-        <div class="front">
-          <div class="top-portion">
-            <img src="../fashion.png" alt="" />
-          </div>
-          <b class="label">General Events</b>
-          <div class="bottom-protion">
-            <h2>Fashion Show</h2>
-            <p>Sri Valliappa Auditorium</p>
-          </div>
-          <div class="shadow"></div>
-        </div>
-        <div class="back back-3">
-          <div class="back-content">
-            <div class="pname">Fashion Show</div>
-            <div class="description">Rules</div>
-            <div class="btn">
-              <button class="button">Register Now</button>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li class="event-card" data-aos="zoom-in">
-        <div class="front">
-          <div class="top-portion">
-            <img src="../band.png" alt="" />
-          </div>
-          <b class="label">General Events</b>
-          <div class="bottom-protion">
-            <h2>Battle of Bands</h2>
-            <p>Sri Valliappa Auditorium</p>
-          </div>
-          <div class="shadow"></div>
-        </div>
-        <div class="back back-4">
-          <div class="back-content">
-            <div class="pname">Battle of Bands</div>
-            <div class="description">Rules</div>
-            <div class="btn">
-              <button class="button">Register Now</button>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li class="event-card" data-aos="fade-right">
-        <div class="front">
-          <div class="top-portion">
-            <img src="../photo.png" alt="" />
-          </div>
-          <b class="label">General Events</b>
-          <div class="bottom-protion">
-            <h2>Photography</h2>
-            <p>Sri Valliappa Auditorium</p>
-          </div>
-          <div class="shadow"></div>
-        </div>
-        <div class="back back-5">
-          <div class="back-content">
-            <div class="pname">Photography</div>
-            <div class="description">Rules</div>
-            <div class="btn">
-              <button class="button">Register Now</button>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li class="event-card" data-aos="fade-left">
-        <div class="front">
-          <div class="top-portion">
-            <img src="../ipl.png" alt="" />
-          </div>
-          <b class="label">General Events</b>
-          <div class="bottom-protion">
-            <h2>IPL Auction</h2>
-            <p>Sri Valliappa Auditorium</p>
-          </div>
-          <div class="shadow"></div>
-        </div>
-        <div class="back back-6">
-          <div class="back-content">
-            <div class="pname">IPL Auction</div>
-            <div class="description">Rules</div>
-            <div class="btn">
-              <button class="button">Register Now</button>
-            </div>
-          </div>
-        </div>
-      </li>
-
-      <li class="event-card" data-aos="fade-right">
-        <div class="front">
-          <div class="top-portion">
-            <img src="../img1.png" alt="" />
-          </div>
-          <b class="label">General Events</b>
-          <div class="bottom-protion">
-            <h2>Group Dance</h2>
-            <p>Sri Valliappa Auditorium</p>
-          </div>
-          <div class="shadow"></div>
-        </div>
-        <div class="back back-7">
-          <div class="back-content">
-            <div class="pname">Group Dance</div>
-            <div class="description">Rules</div>
-            <div class="btn">
-              <button class="button">Register Now</button>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="event-card" data-aos="fade-left">
-        <div class="front">
-          <div class="top-portion">
-            <img src="../twoeer.png" alt="" />
-          </div>
-          <b class="label">General Events</b>
-          <div class="bottom-protion">
-            <h2>Tower Building</h2>
-            <p>Sri Valliappa Auditorium</p>
-          </div>
-          <div
-            class="shadow"
-            <div
-            class="shadow shadwo-2"
-            style="
-              background: linear-gradient(
-                to top,
-                rgb(1, 103, 34) 0%,
-                rgba(75, 188, 98, 0.858) 40%,
-                rgba(13, 0, 68, 0) 100%
-              );
-            "
-          ></div>
-        </div>
-        <div class="back back-8">
-          <div class="back-content">
-            <div class="pname">Tower Building</div>
-            <div class="description">Rules</div>
-            <div class="btn">
-              <button class="button">Register Now</button>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="event-card" data-aos="fade-right">
-        <div class="front">
-          <div class="top-portion">
-            <img src="../cook.png" alt="" />
-          </div>
-          <b class="label">General Events</b>
-          <div class="bottom-protion">
-            <h2>Fireless Cooking</h2>
-            <p>Sri Valliappa Auditorium</p>
-          </div>
-          <div
-            class="shadow"
-            <div
-            class="shadow shadwo-2"
-            style="
-              background: linear-gradient(
-                to top,
-                rgba(239, 115, 57, 0.71) 0%,
-                rgba(225, 125, 10, 0.462) 40%,
-                rgba(13, 0, 68, 0) 100%
-              );
-            "
-          ></div>
-        </div>
-        <div class="back back-9">
-          <div class="back-content">
-            <div class="pname">Fireless Cooking</div>
-            <div class="description">Rules</div>
-            <div class="btn">
-              <button class="button">Register Now</button>
-            </div>
-          </div>
-        </div>
-      </li>
-      <li class="event-card" data-aos="fade-left">
-        <div class="front">
-          <div class="top-portion">
-            <img src="../meme.png" alt="" />
-          </div>
-          <b class="label">General Events</b>
-          <div class="bottom-protion">
-            <h2>Meme Creation</h2>
-            <p>Sri Valliappa Auditorium</p>
-          </div>
-          <div
-            class="shadow"
-            <div
-            class="shadow shadwo-2"
-            style="
-              background: linear-gradient(
-                to top,
-                rgba(0, 0, 0, 0.725) 0%,
-                rgba(0, 0, 0, 0.718) 40%,
-                rgba(13, 0, 68, 0) 100%
-              );
-            "
-          ></div>
-        </div>
-        <div class="back back-10">
-          <div class="back-content">
-            <div class="pname">Meme Creation</div>
-            <div class="description">Rules</div>
-            <div class="btn">
-              <button class="button">Register Now</button>
-            </div>
-          </div>
-        </div>
-      </li>
-    </div>
-
-    <!-- second image hover effect -->
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <img src="https://static.wixstatic.com/media/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg/v1/fill/w_980,h_821,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg" alt="" style="width: 980px; height: 821px; object-fit: cover; object-position: 50% 50%;" width="980" height="821" data-ssr-src-done="true" fetchpriority="high">
     <script>
-      AOS.init({
-        duration: 500,
-        easing: "ease-in-out",
-        once: false,
-      });
+        const canvas = document.getElementById("canvas");
+        const ctx = canvas.getContext("2d");
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        const particles = [];
+        const colors = ["#FF5733", "#FFC300", "#DAF7A6", "#FF33FF", "#33FFF6"];
+
+        class Particle {
+            constructor(x, y, dx, dy, radius, color) {
+                this.x = x;
+                this.y = y;
+                this.dx = dx;
+                this.dy = dy;
+                this.radius = radius;
+                this.color = color;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.fill();
+            }
+
+            update() {
+                if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
+                    this.dx = -this.dx;
+                }
+                if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
+                    this.dy = -this.dy;
+                }
+
+                this.x += this.dx;
+                this.y += this.dy;
+                this.draw();
+            }
+        }
+
+        function init() {
+            for (let i = 0; i < 100; i++) {
+                const radius = Math.random() * 5 + 2;
+                const x = Math.random() * (canvas.width - radius * 2) + radius;
+                const y = Math.random() * (canvas.height - radius * 2) + radius;
+                const dx = (Math.random() - 0.5) * 2;
+                const dy = (Math.random() - 0.5) * 2;
+                const color = colors[Math.floor(Math.random() * colors.length)];
+                particles.push(new Particle(x, y, dx, dy, radius, color));
+            }
+        }
+
+        function animate() {
+            requestAnimationFrame(animate);
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            particles.forEach(particle => particle.update());
+        }
+
+        window.addEventListener("resize", () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            particles.length = 0;
+            init();
+        });
+
+        init();
+        animate();
     </script>
-  </body>
+</body>
 </html>

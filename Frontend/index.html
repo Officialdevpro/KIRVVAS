@@ -34,7 +34,7 @@
         color: #ffffff;
       }
       .body.ch-style .app .text-container {
-        color: rgb(78, 0, 147);
+        color: rgb(255, 255, 255);
       }
       .letter {
         display: inline-block;
@@ -52,6 +52,7 @@
         justify-content: center;
         align-items: center;
         flex-direction: column;
+        width: 100%;
       }
       .button-63 {
         align-items: center;
@@ -104,8 +105,7 @@
         height: 300px;
         float: left;
       }
-      *{
-
+      * {
         scrollbar-width: none;
       }
 
@@ -279,7 +279,7 @@
         height: 100%;
         top: 0%;
         right: -100%;
-        background-color: rgb(0, 136, 255);
+        background-color: rgb(0, 0, 0);
         transition: all 0.3s linear;
         z-index: -1;
       }
@@ -417,11 +417,118 @@
         position: absolute;
         top: 100%;
       }
+
+      .slider-container {
+        
+        background: url(https://static.wixstatic.com/media/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg/v1/fill/w_980,h_821,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg>
+        );
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        display: none;
+        position: relative;
+        width: 100%;
+        color: #ffffff;
+        height: 100vh;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        border-radius: 10px;
+        z-index: -1;
+      }
+
+      .slide {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        transition: opacity 1s ease-in-out;
+        
+       
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+      }
+
+      .slide.active {
+        opacity: 1;
+      }
+
+      h2,
+      p {
+        font-size: 1.5rem;
+        margin-bottom: 10px;
+      }
+
+      .animate-left {
+        transform: translateX(-100px);
+        opacity: 0;
+        transition: all 1s ease;
+      }
+
+      .animate-right {
+        transform: translateX(100px);
+        opacity: 0;
+        transition: all 1s ease;
+      }
+
+      .animate-bottom {
+        transform: translateY(50px);
+        opacity: 0;
+        transition: all 1s ease;
+      }
+
+      .slide.active .animate-left,
+      .slide.active .animate-right,
+      .slide.active .animate-bottom {
+        transform: translateX(0);
+        transform: translateY(0);
+        opacity: 1;
+      }
     </style>
   </head>
   <body class="body">
     <div class="app">
       <h1 class="text-container" id="text"></h1>
+
+      <div class="slider-container">
+        <div class="slide active">
+          <h1 class="animate-left">Cyber Conclave 2025</h1>
+          <p class="animate-right">
+            Explore cybersecurity topics like AI in security, cryptography, and
+            OSINT.
+          </p>
+          <p class="animate-bottom">
+            <strong>Sona Campus</strong> | March 14, 2025
+          </p>
+        </div>
+        <div class="slide">
+          <h1 class="animate-left">Techno Fest 2025</h1>
+          <p class="animate-right">
+            Immerse in the latest tech innovations, hackathons, and startup
+            showcases.
+          </p>
+          <p class="animate-bottom">
+            <strong>Sona College</strong> | April 20, 2025
+          </p>
+        </div>
+        <div class="slide">
+          <h1 class="animate-left">Cultural Carnival 2025</h1>
+          <p class="animate-right">
+            A vibrant festival showcasing dance, music, drama, and art from
+            across the country.
+          </p>
+          <p class="animate-bottom">
+            <strong>Sona College</strong> | May 5, 2025
+          </p>
+        </div>
+      </div>
       <!-- second image hover effect -->
       <div class="hel">
         <div class="event-container">
@@ -433,14 +540,14 @@
               <b class="label">General Events</b>
               <div class="bottom-protion">
                 <h2>Group Dance</h2>
-                <p>Sri Valliappa Auditorium</p>
+                <p>Groovista</p>
               </div>
               <div class="shadow"></div>
             </div>
             <div class="back">
               <div class="back-content">
                 <div class="pname">Group Dance</div>
-                <div class="description">Rules</div>
+                <div class="description">Groovista</div>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -456,14 +563,14 @@
               <b class="label">General Events</b>
               <div class="bottom-protion">
                 <h2>Solo Dance</h2>
-                <p>PG Auditorium</p>
+                <p>Rhythmic Canvas</p>
               </div>
               <div class="shadow"></div>
             </div>
             <div class="back back-2">
               <div class="back-content">
                 <div class="pname">Solo Dance</div>
-                <div class="description">Rules</div>
+                <div class="description">Rhythmic Canvas</div>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -479,14 +586,14 @@
               <b class="label">General Events</b>
               <div class="bottom-protion">
                 <h2>Fashion Show</h2>
-                <p>Sri Valliappa Auditorium</p>
+                <p>Runway Reverie</p>
               </div>
               <div class="shadow"></div>
             </div>
             <div class="back back-3">
               <div class="back-content">
                 <div class="pname">Fashion Show</div>
-                <div class="description">Rules</div>
+                <div class="description">Runway Reverie</div>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -502,14 +609,14 @@
               <b class="label">General Events</b>
               <div class="bottom-protion">
                 <h2>Battle of Bands</h2>
-                <p>Sri Valliappa Auditorium</p>
+                <p>Symphony Fest</p>
               </div>
               <div class="shadow"></div>
             </div>
             <div class="back back-4">
               <div class="back-content">
                 <div class="pname">Battle of Bands</div>
-                <div class="description">Rules</div>
+                <div class="description">Symphony Fest</div>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -525,14 +632,14 @@
               <b class="label">General Events</b>
               <div class="bottom-protion">
                 <h2>Photography</h2>
-                <p>Sri Valliappa Auditorium</p>
+                <p>Frozen Frames</p>
               </div>
               <div class="shadow"></div>
             </div>
             <div class="back back-5">
               <div class="back-content">
                 <div class="pname">Photography</div>
-                <div class="description">Rules</div>
+                <div class="description">Frozen Frames</div>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -548,14 +655,14 @@
               <b class="label">General Events</b>
               <div class="bottom-protion">
                 <h2>IPL Auction</h2>
-                <p>Sri Valliappa Auditorium</p>
+                <p>Cricket Carnival</p>
               </div>
               <div class="shadow"></div>
             </div>
             <div class="back back-6">
               <div class="back-content">
                 <div class="pname">IPL Auction</div>
-                <div class="description">Rules</div>
+                <div class="description">Cricket Carnival</div>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -570,15 +677,15 @@
               </div>
               <b class="label">General Events</b>
               <div class="bottom-protion">
-                <h2>Group Dance</h2>
-                <p>Sri Valliappa Auditorium</p>
+                <h2>Brain Busters</h2>
+                <p>Mind Masquerade</p>
               </div>
               <div class="shadow"></div>
             </div>
             <div class="back back-7">
               <div class="back-content">
-                <div class="pname">Group Dance</div>
-                <div class="description">Rules</div>
+                <div class="pname">Brain Busters</div>
+                <div class="description">Mind Masquerade</div>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -593,7 +700,7 @@
               <b class="label">General Events</b>
               <div class="bottom-protion">
                 <h2>Tower Building</h2>
-                <p>Sri Valliappa Auditorium</p>
+                <p>Artisan Heights</p>
               </div>
               <div
                 class="shadow"
@@ -612,7 +719,7 @@
             <div class="back back-8">
               <div class="back-content">
                 <div class="pname">Tower Building</div>
-                <div class="description">Rules</div>
+                <div class="description">Artisan Heights</div>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -627,7 +734,7 @@
               <b class="label">General Events</b>
               <div class="bottom-protion">
                 <h2>Fireless Cooking</h2>
-                <p>Sri Valliappa Auditorium</p>
+                <p>Flavours Unleashed</p>
               </div>
               <div
                 class="shadow"
@@ -646,7 +753,7 @@
             <div class="back back-9">
               <div class="back-content">
                 <div class="pname">Fireless Cooking</div>
-                <div class="description">Rules</div>
+                <div class="description">Flavours Unleashed</div>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -660,8 +767,8 @@
               </div>
               <b class="label">General Events</b>
               <div class="bottom-protion">
-                <h2>Meme Creation</h2>
-                <p>Sri Valliappa Auditorium</p>
+                <h2>Mime Creation</h2>
+                <p>Silent Spectacle</p>
               </div>
               <div
                 class="shadow"
@@ -679,8 +786,8 @@
             </div>
             <div class="back back-10">
               <div class="back-content">
-                <div class="pname">Meme Creation</div>
-                <div class="description">Rules</div>
+                <div class="pname">Mime Creation</div>
+                <div class="description">Silent Spectacle</div>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -701,11 +808,11 @@
     <script>
       const text = "KRIVVAS  2025";
       const container = document.getElementById("text");
-      
+
       function animateText() {
         // Clear previous text
         container.innerHTML = "";
-      
+
         // Split the text into spans
         text.split("").forEach((letter) => {
           let span = document.createElement("span");
@@ -713,7 +820,7 @@
           span.classList.add("letter");
           container.appendChild(span);
         });
-      
+
         // GSAP Animation
         gsap.fromTo(
           ".letter",
@@ -729,7 +836,6 @@
           }
         );
       }
-      
 
       function celebrate() {
         const count = 200,
@@ -774,12 +880,22 @@
 
         document.querySelector(".text-container").classList.add("move");
         document.querySelector(".body").classList.add("ch-style");
-        document.querySelector(".events-container").style.display = "block";
+        // document.querySelector(".events-container").style.display = "block";
+        document.querySelector(".slider-container").style.display = "block";
       }
 
       // Initial call
       animateText();
+      let currentSlide = 0;
+      const slides = document.querySelectorAll(".slide");
 
+      function showNextSlide() {
+        slides[currentSlide].classList.remove("active");
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add("active");
+      }
+
+      setInterval(showNextSlide, 3000);
       // Repeat every 10 seconds
       // setInterval(animateText, 6000);
     </script>
