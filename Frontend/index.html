@@ -8,6 +8,9 @@
     <script src="https://cdn.jsdelivr.net/npm/@tsparticles/confetti@3.0.3/tsparticles.confetti.bundle.min.js"></script>
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+    integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+    crossorigin="anonymous" />
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
 
@@ -414,14 +417,14 @@
       }
 
       .slider-container {
-        background: url(https://static.wixstatic.com/media/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg/v1/fill/w_980,h_821,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg>);
+       
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
         display: none;
         position: relative;
         width: 100%;
-        color: #ffffff;
+        color: #000000;
         height: 100vh;
         overflow: hidden;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
@@ -608,33 +611,135 @@
           display: flex;
         }
       }
+      .text {
+        text-transform: uppercase;
+      }
+      
+      .logo {
+        width: 200px;
+      }
+      
+      .nav-btn {
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        font-size: 25px;
+      }
+      
+      .open-btn {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+      }
+      
+      .nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 100vh;
+        transform: translateX(-100%);
+        transition: transform 0.3s ease-in-out;
+      }
+      
+      .nav.visible {
+        transform: translateX(0);
+      }
+      
+      .nav-black {
+        background-color: rgb(1, 48, 125);
+        width: 60%;
+        max-width: 480px;
+        min-width: 320px;
+        transition-delay: 0.4s;
+      }
+      
+      .nav-black.visible {
+        transition-delay: 0s;
+      }
+      
+      .nav-red {
+        background-color: rgb(255, 217, 0);
+        width: 95%;
+        transition-delay: 0.2s;
+      }
+      
+      .nav-red.visible {
+        transition-delay: 0.2s;
+      }
+      
+      .nav-white {
+        background-color: #fff;
+        width: 95%;
+        padding: 40px;
+        position: relative;
+        transition-delay: 0s;
+      }
+      
+      .nav-white.visible {
+        transition-delay: 0.4s;
+      }
+      
+      .close-btn {
+        opacity: 0.3;
+        position: absolute;
+        top: 40px;
+        right: 30px;
+      }
+      
+      .list {
+        list-style-type: none;
+        padding: 0;
+      }
+      
+      .list li {
+        margin: 20px 0;
+      }
+      
+      .list li a {
+        color: rgb(34, 31, 31);
+        font-size: 14px;
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+      
+      .list ul {
+        list-style-type: none;
+        padding-left: 20px;
+      }
     </style>
   </head>
   <body class="body">
     <div class="app">
       <h1 class="text-container" id="text"></h1>
-      <header>
-        <nav>
-          <a href="#">Home</a>
-          <a href="#">Contact Us</a>
-          <a href="#">Explore</a>
-          <a href="#">Works</a>
-          <a href="#">Register</a>
-        </nav>
-        <div class="hamburger" onclick="toggleMenu()">
-          <div></div>
-          <div></div>
-          <div></div>
+      <button class="nav-btn open-btn">
+        <i class="fas fa-bars"></i>
+      </button>
+        <div class="nav nav-black">
+          <div class="nav nav-red">
+            <div class="nav nav-white">
+              <button class="nav-btn close-btn">
+                <i class="fas fa-times"></i>
+              </button>
+      
+              <img
+                src="https://www.sonatech.ac.in/images/sona-tech-logo.png"
+                alt="Logo" class="logo">
+      
+              <ul class="list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Contact us</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Explore</a></li>
+                <li><a href="#">Register</a></li>
+                
+              </ul>
+            </div>
+          </div>
         </div>
-      </header>
+      
 
-      <div class="fullscreen-menu">
-        <a href="#">Home</a>
-        <a href="#">Contact Us</a>
-        <a href="#">Explore</a>
-        <a href="#">Works</a>
-        <a href="#">Register</a>
-      </div>
+
+     
       <div class="slider-container">
         <div class="slide active">
           <h1 class="animate-left">Cyber Conclave 2025</h1>
@@ -966,6 +1071,19 @@
         </div>
       </div>
     </div>
+    <script>
+      const open_btn = document.querySelector('.open-btn')
+  const close_btn = document.querySelector('.close-btn')
+  const nav = document.querySelectorAll('.nav')
+  
+  open_btn.addEventListener('click', () => {
+      nav.forEach(nav_el => nav_el.classList.add('visible'))
+  })
+  
+  close_btn.addEventListener('click', () => {
+      nav.forEach(nav_el => nav_el.classList.remove('visible'))
+  })
+    </script>
 
     <script>
       AOS.init({
