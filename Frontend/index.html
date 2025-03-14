@@ -10,9 +10,9 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
-    
-        @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
-    
+
+      @import url("https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap");
+
       body {
         display: flex;
         justify-content: center;
@@ -148,8 +148,6 @@
         box-sizing: border-box;
       }
 
-     
-
       .back-content {
         padding: 0px 10px;
         transition: all 0.5s ease;
@@ -177,8 +175,8 @@
       .event-card:hover .back-content {
         transform: scale(1);
         opacity: 1;
-       position: absolute;
-       bottom: 20px;
+        position: absolute;
+        bottom: 20px;
       }
       .event-card:hover .back {
         border-radius: 10px;
@@ -454,8 +452,6 @@
         opacity: 1;
       }
 
-     
-
       .animate-left {
         transform: translateX(-100px);
         opacity: 0;
@@ -481,13 +477,13 @@
         transform: translateY(0);
         opacity: 1;
       }
-      
+
       .back-content p {
         font-size: 18px;
         text-align: justify;
       }
       .back .back-content {
-       height: 220px;
+        height: 220px;
         padding: 20px;
         display: flex;
         justify-content: space-between;
@@ -495,12 +491,150 @@
         flex-direction: column;
         gap: 10px;
       }
+      header {
+        position: absolute;
+        top: 0;
+        left: 0;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+        padding: 10px 20px;
+
+        width: 100%;
+      }
+      h1 {
+        margin: 0;
+        font-size: 24px;
+      }
+
+      /* Navigation styling */
+      nav {
+        display: flex;
+        gap: 20px;
+      }
+      nav a {
+        color: #fff;
+        text-decoration: none;
+        padding: 10px;
+        transition: 0.3s;
+        position: relative;
+        overflow: hidden;
+      }
+      nav a:hover {
+        color: #00f6ff;
+      }
+      nav a::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: -100%;
+        width: 100%;
+        height: 2px;
+        background: #00f6ff;
+        transition: 0.4s;
+      }
+      nav a:hover::after {
+        left: 0;
+      }
+
+      /* Hamburger styling */
+      .hamburger {
+        display: none;
+        flex-direction: column;
+        gap: 5px;
+        cursor: pointer;
+        z-index: 1001;
+      }
+      .hamburger div {
+        width: 30px;
+        height: 3px;
+        background: #00f6ff;
+        transition: 0.4s;
+      }
+
+      /* Full-screen mobile menu */
+      .fullscreen-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.95);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        transform: translateY(-100%);
+        transition: 0.7s ease-in-out;
+        opacity: 0;
+        pointer-events: none;
+      }
+      .fullscreen-menu a {
+        margin: 20px;
+        font-size: 24px;
+        color: #00f6ff;
+        text-decoration: none;
+        opacity: 0;
+        transform: translateY(-20px);
+        transition: 0.5s ease;
+      }
+
+      /* Open state animations */
+      .hamburger.open div:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+      }
+      .hamburger.open div:nth-child(2) {
+        opacity: 0;
+      }
+      .hamburger.open div:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+      }
+      .fullscreen-menu.open {
+        transform: translateY(0);
+        opacity: 1;
+        pointer-events: auto;
+      }
+      .fullscreen-menu.open a {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      /* Show hamburger icon on smaller screens */
+      @media (max-width: 768px) {
+        nav {
+          display: none;
+        }
+        .hamburger {
+          display: flex;
+        }
+      }
     </style>
   </head>
   <body class="body">
     <div class="app">
       <h1 class="text-container" id="text"></h1>
+      <header>
+        <nav>
+          <a href="#">Home</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Explore</a>
+          <a href="#">Works</a>
+          <a href="#">Register</a>
+        </nav>
+        <div class="hamburger" onclick="toggleMenu()">
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </header>
 
+      <div class="fullscreen-menu">
+        <a href="#">Home</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Explore</a>
+        <a href="#">Works</a>
+        <a href="#">Register</a>
+      </div>
       <div class="slider-container">
         <div class="slide active">
           <h1 class="animate-left">Cyber Conclave 2025</h1>
@@ -840,99 +974,6 @@
         once: false,
       });
     </script>
-    <script>
-      const text = "KRIVVAS  2025";
-      const container = document.getElementById("text");
-
-      function animateText() {
-        // Clear previous text
-        container.innerHTML = "";
-
-        // Split the text into spans
-        text.split("").forEach((letter) => {
-          let span = document.createElement("span");
-          span.innerHTML = letter === " " ? "&nbsp;" : letter; // Ensure space is visible
-          span.classList.add("letter");
-          container.appendChild(span);
-        });
-
-        // GSAP Animation
-        gsap.fromTo(
-          ".letter",
-          { opacity: 0, y: 50, scale: 0.5, rotation: 50 },
-          {
-            opacity: 1,
-            y: 0,
-            scale: 1,
-            rotation: 1,
-            stagger: 0.1,
-            ease: "back.out(1.7)",
-            onComplete: celebrate,
-          }
-        );
-      }
-
-      function celebrate() {
-        const count = 200,
-          defaults = {
-            origin: { y: 0.7 },
-          };
-
-        function fire(particleRatio, opts) {
-          confetti(
-            Object.assign({}, defaults, opts, {
-              particleCount: Math.floor(count * particleRatio),
-            })
-          );
-        }
-
-        fire(0.25, {
-          spread: 26,
-          startVelocity: 55,
-        });
-
-        fire(0.2, {
-          spread: 60,
-        });
-
-        fire(0.35, {
-          spread: 100,
-          decay: 0.91,
-          scalar: 0.8,
-        });
-
-        fire(0.1, {
-          spread: 120,
-          startVelocity: 25,
-          decay: 0.92,
-          scalar: 1.2,
-        });
-
-        fire(0.1, {
-          spread: 120,
-          startVelocity: 45,
-        });
-
-        document.querySelector(".text-container").classList.add("move");
-        document.querySelector(".body").classList.add("ch-style");
-        // document.querySelector(".events-container").style.display = "block";
-        document.querySelector(".slider-container").style.display = "block";
-      }
-
-      // Initial call
-      animateText();
-      let currentSlide = 0;
-      const slides = document.querySelectorAll(".slide");
-
-      function showNextSlide() {
-        slides[currentSlide].classList.remove("active");
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add("active");
-      }
-
-      setInterval(showNextSlide, 3000);
-      // Repeat every 10 seconds
-      // setInterval(animateText, 6000);
-    </script>
+    <script src="./script.js"></script>
   </body>
 </html>

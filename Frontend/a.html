@@ -3,96 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Colorful Animated Background</title>
+    <title>Futuristic Animated Hamburger Menu</title>
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
-        }
+        /* Basic styling */
+        body { margin: 0; font-family: 'Arial', sans-serif; background: #0f0f0f; color: #fff; overflow-x: hidden; }
+        header { display: flex; justify-content: space-between; align-items: center; padding: 10px 20px; background: #111; }
+        h1 { margin: 0; font-size: 24px; }
 
-        #canvas {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
+        /* Navigation styling */
+        nav { display: flex; gap: 20px; }
+        nav a { color: #fff; text-decoration: none; padding: 10px; transition: 0.3s; position: relative; overflow: hidden; }
+        nav a:hover { color: #00f6ff; }
+        nav a::after { content: ''; position: absolute; bottom: 0; left: -100%; width: 100%; height: 2px; background: #00f6ff; transition: 0.4s; }
+        nav a:hover::after { left: 0; }
+
+        /* Hamburger styling */
+        .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; z-index: 1001; }
+        .hamburger div { width: 30px; height: 3px; background: #00f6ff; transition: 0.4s; }
+
+        /* Full-screen mobile menu */
+        .fullscreen-menu { 
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.95); display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; transform: translateY(-100%); 
+            transition: 0.7s ease-in-out; opacity: 0; pointer-events: none;
+        }
+        .fullscreen-menu a { margin: 20px; font-size: 24px; color: #00f6ff; text-decoration: none; opacity: 0; transform: translateY(-20px); transition: 0.5s ease; }
+
+        /* Open state animations */
+        .hamburger.open div:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+        .hamburger.open div:nth-child(2) { opacity: 0; }
+        .hamburger.open div:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+        .fullscreen-menu.open { transform: translateY(0); opacity: 1; pointer-events: auto; }
+        .fullscreen-menu.open a { opacity: 1; transform: translateY(0); }
+
+        /* Show hamburger icon on smaller screens */
+        @media (max-width: 768px) {
+            nav { display: none; }
+            .hamburger { display: flex; }
         }
     </style>
 </head>
 <body>
-    <canvas id="canvas"></canvas>
-    <img src="https://static.wixstatic.com/media/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg/v1/fill/w_980,h_821,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg" alt="" style="width: 980px; height: 821px; object-fit: cover; object-position: 50% 50%;" width="980" height="821" data-ssr-src-done="true" fetchpriority="high">
+    <header>
+        <h1>Futuristic Nav</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Contact Us</a>
+            <a href="#">Explore</a>
+            <a href="#">Works</a>
+            <a href="#">Register</a>
+        </nav>
+        <div class="hamburger" onclick="toggleMenu()">
+            <div></div>
+            <div></div>
+            <div></div>
+        </div>
+    </header>
+
+    <div class="fullscreen-menu">
+        <a href="#">Home</a>
+        <a href="#">Contact Us</a>
+        <a href="#">Explore</a>
+        <a href="#">Works</a>
+        <a href="#">Register</a>
+    </div>
+
     <script>
-        const canvas = document.getElementById("canvas");
-        const ctx = canvas.getContext("2d");
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-
-        const particles = [];
-        const colors = ["#FF5733", "#FFC300", "#DAF7A6", "#FF33FF", "#33FFF6"];
-
-        class Particle {
-            constructor(x, y, dx, dy, radius, color) {
-                this.x = x;
-                this.y = y;
-                this.dx = dx;
-                this.dy = dy;
-                this.radius = radius;
-                this.color = color;
-            }
-
-            draw() {
-                ctx.beginPath();
-                ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
-                ctx.fillStyle = this.color;
-                ctx.fill();
-            }
-
-            update() {
-                if (this.x + this.radius > canvas.width || this.x - this.radius < 0) {
-                    this.dx = -this.dx;
-                }
-                if (this.y + this.radius > canvas.height || this.y - this.radius < 0) {
-                    this.dy = -this.dy;
-                }
-
-                this.x += this.dx;
-                this.y += this.dy;
-                this.draw();
-            }
+        function toggleMenu() {
+            const hamburger = document.querySelector('.hamburger');
+            const menu = document.querySelector('.fullscreen-menu');
+            hamburger.classList.toggle('open');
+            menu.classList.toggle('open');
         }
-
-        function init() {
-            for (let i = 0; i < 100; i++) {
-                const radius = Math.random() * 5 + 2;
-                const x = Math.random() * (canvas.width - radius * 2) + radius;
-                const y = Math.random() * (canvas.height - radius * 2) + radius;
-                const dx = (Math.random() - 0.5) * 2;
-                const dy = (Math.random() - 0.5) * 2;
-                const color = colors[Math.floor(Math.random() * colors.length)];
-                particles.push(new Particle(x, y, dx, dy, radius, color));
-            }
-        }
-
-        function animate() {
-            requestAnimationFrame(animate);
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-
-            particles.forEach(particle => particle.update());
-        }
-
-        window.addEventListener("resize", () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-            particles.length = 0;
-            init();
-        });
-
-        init();
-        animate();
     </script>
 </body>
 </html>
