@@ -10,7 +10,9 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style>
       @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap");
-
+    
+        @import url('https://fonts.googleapis.com/css2?family=Funnel+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+    
       body {
         display: flex;
         justify-content: center;
@@ -21,7 +23,7 @@
         overflow-x: hidden;
         overflow-y: scroll;
         scrollbar-width: none;
-        background: rgb(110, 0, 255);
+        background: rgb(30, 28, 84);
       }
       body.body.ch-style {
         background-color: #ffffff;
@@ -146,14 +148,7 @@
         box-sizing: border-box;
       }
 
-      .pname {
-        font-size: 24px;
-        font-weight: bold;
-      }
-
-      .description {
-        margin: 20px 0px;
-      }
+     
 
       .back-content {
         padding: 0px 10px;
@@ -182,8 +177,10 @@
       .event-card:hover .back-content {
         transform: scale(1);
         opacity: 1;
+       position: absolute;
+       bottom: 20px;
       }
-      .event-card .back {
+      .event-card:hover .back {
         border-radius: 10px;
         transition: all 0.1s ease;
       }
@@ -268,7 +265,7 @@
         height: 100%;
         top: 0%;
         left: -100%;
-        background-color: gold;
+        background-color: rgb(255, 255, 255);
         transition: all 0.3s linear;
         z-index: -1;
       }
@@ -279,7 +276,7 @@
         height: 100%;
         top: 0%;
         right: -100%;
-        background-color: rgb(0, 0, 0);
+        background-color: rgb(255, 255, 255);
         transition: all 0.3s linear;
         z-index: -1;
       }
@@ -419,9 +416,7 @@
       }
 
       .slider-container {
-        
-        background: url(https://static.wixstatic.com/media/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg/v1/fill/w_980,h_821,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg>
-        );
+        background: url(https://static.wixstatic.com/media/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg/v1/fill/w_980,h_821,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg>);
         background-position: center;
         background-size: cover;
         background-repeat: no-repeat;
@@ -446,8 +441,7 @@
         align-items: center;
         gap: 20px;
         transition: opacity 1s ease-in-out;
-        
-       
+
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -460,11 +454,7 @@
         opacity: 1;
       }
 
-      h2,
-      p {
-        font-size: 1.5rem;
-        margin-bottom: 10px;
-      }
+     
 
       .animate-left {
         transform: translateX(-100px);
@@ -490,6 +480,20 @@
         transform: translateX(0);
         transform: translateY(0);
         opacity: 1;
+      }
+      
+      .back-content p {
+        font-size: 18px;
+        text-align: justify;
+      }
+      .back .back-content {
+       height: 220px;
+        padding: 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-direction: column;
+        gap: 10px;
       }
     </style>
   </head>
@@ -546,8 +550,11 @@
             </div>
             <div class="back">
               <div class="back-content">
-                <div class="pname">Group Dance</div>
-                <div class="description">Groovista</div>
+                <p>
+                  Get ready to groove! Groovista is an ultimate group dance
+                  battle, feel the rhythm, synchronize with your team and dazzle
+                  the audience!
+                </p>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -569,8 +576,11 @@
             </div>
             <div class="back back-2">
               <div class="back-content">
-                <div class="pname">Solo Dance</div>
-                <div class="description">Rhythmic Canvas</div>
+                <p>
+                  Unleash your soul through movements! Rhythmic Canvas is a solo
+                  dance event where dancers mesmerize the audience with unique
+                  style and energy. Feel the music, own the stage!
+                </p>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -592,8 +602,12 @@
             </div>
             <div class="back back-3">
               <div class="back-content">
-                <div class="pname">Fashion Show</div>
-                <div class="description">Runway Reverie</div>
+                <p>
+                  Show off your style! Runway Reverie is a fashion extravaganza
+                  where elegance meets confidence. A dazzling display of your
+                  cutting-edge fashion and captivating designs. Walk the ramp
+                  and own the spotlight.
+                </p>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -615,8 +629,11 @@
             </div>
             <div class="back back-4">
               <div class="back-content">
-                <div class="pname">Battle of Bands</div>
-                <div class="description">Symphony Fest</div>
+                <p>
+                  Let the music roar! Symphony Fest is the epic Battle of Bands
+                  where passion ignites performance! Show off your skills, jam
+                  with your band, and win the crowd.
+                </p>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -638,8 +655,11 @@
             </div>
             <div class="back back-5">
               <div class="back-content">
-                <div class="pname">Photography</div>
-                <div class="description">Frozen Frames</div>
+                <p>
+                  Preserve the beauty of now! Frozen Frames is the photography
+                  event where art meets perspective. A fusion of vision, art,
+                  and storytelling. Lock the moment in a frame!
+                </p>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -661,8 +681,12 @@
             </div>
             <div class="back back-6">
               <div class="back-content">
-                <div class="pname">IPL Auction</div>
-                <div class="description">Cricket Carnival</div>
+                <p>
+                  Get ready to bid! Experience the excitement of the IPL auction
+                  where strategy meets sportsmanship. Craft your approach, bid,
+                  and build your dream team in this high-stakes cricket
+                  showdown!
+                </p>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -684,8 +708,11 @@
             </div>
             <div class="back back-7">
               <div class="back-content">
-                <div class="pname">Brain Busters</div>
-                <div class="description">Mind Masquerade</div>
+                <p>
+                  Challenge your intellect! Mind Masquerade is the quiz event
+                  where knowledge meets cleverness. Crack the puzzles and
+                  showcase your genius in this battle of wits!
+                </p>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -704,7 +731,6 @@
               </div>
               <div
                 class="shadow"
-                <div
                 class="shadow shadwo-2"
                 style="
                   background: linear-gradient(
@@ -718,8 +744,12 @@
             </div>
             <div class="back back-8">
               <div class="back-content">
-                <div class="pname">Tower Building</div>
-                <div class="description">Artisan Heights</div>
+                <p>
+                  Build your masterpiece! Artisan Heights is the tower building
+                  event where architecture meets innovation to conquer the
+                  heights. Engineer, build, and defy gravity as you construct
+                  the tallest and strongest marvel.
+                </p>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -738,7 +768,6 @@
               </div>
               <div
                 class="shadow"
-                <div
                 class="shadow shadwo-2"
                 style="
                   background: linear-gradient(
@@ -752,8 +781,12 @@
             </div>
             <div class="back back-9">
               <div class="back-content">
-                <div class="pname">Fireless Cooking</div>
-                <div class="description">Flavours Unleashed</div>
+                <p>
+                  Savor the taste, skip the flames! Flavors Unleashed is the
+                  fireless cooking event where creativity meets cuisine. Cook
+                  with passion, plate with perfection, and impress every taste
+                  bud!
+                </p>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
@@ -772,7 +805,6 @@
               </div>
               <div
                 class="shadow"
-                <div
                 class="shadow shadwo-2"
                 style="
                   background: linear-gradient(
@@ -786,8 +818,11 @@
             </div>
             <div class="back back-10">
               <div class="back-content">
-                <div class="pname">Mime Creation</div>
-                <div class="description">Silent Spectacle</div>
+                <p>
+                  Express beyond speech! Silent Spectacle is the mime event
+                  where expression meets emotion. Convey, captivate, and perform
+                  wordlessly where the words fade and expression remains...
+                </p>
                 <div class="btn">
                   <button class="button">Register Now</button>
                 </div>
