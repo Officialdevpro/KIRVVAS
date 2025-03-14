@@ -82,7 +82,7 @@ document.querySelector(".body").classList.add("ch-style");
 document.querySelector(".slider-container").style.display = "block";
 
 // Initial call
-// animateText();
+animateText();
 let currentSlide = 0;
 const slides = document.querySelectorAll(".slide");
 
