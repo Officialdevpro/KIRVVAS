@@ -8,6 +8,12 @@
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.14.0/css/all.min.css"
+      integrity="sha512-1PKOgIY59xJ8Co8+NE6FZ+LOAZKjy+KY8iq0G4B3CyeY6wYHN3yt9PW0XpSriVlkMXe40PTKnXrLnZ9+fkDaog=="
+      crossorigin="anonymous"
+    />
   </head>
   <style>
     @import url("https://fonts.googleapis.com/css?family=Open+Sans");
@@ -559,7 +565,7 @@
       color: white;
       padding: 10px;
       position: relative;
-      
+
       text-align: left;
       width: 100%;
     }
@@ -921,6 +927,8 @@
       overflow: hidden;
     }
 
+    @import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
+
     .text {
       text-transform: uppercase;
     }
@@ -944,15 +952,14 @@
 
     .nav-ham {
       position: fixed;
-      top: 1000px;
-      display: none;
+      top: 0;
       left: 0;
       height: 100vh;
       transform: translateX(-100%);
       transition: transform 0.3s ease-in-out;
     }
 
-    .nav.visible {
+    .nav-ham.visible {
       transform: translateX(0);
     }
 
@@ -969,7 +976,7 @@
     }
 
     .nav-red {
-      background-color: rgb(229, 9, 20);
+      background-color: rgb(255 169 0);
       width: 95%;
       transition-delay: 0.2s;
     }
@@ -1017,106 +1024,114 @@
       list-style-type: none;
       padding-left: 20px;
     }
-    >
-  /* Container Styling */
-  .card-container {
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-    padding: 20px;
-    background: linear-gradient(135deg, #1e2a47, #3b8beb);
-  }
 
-  /* Card Styling */
-  .card {
-    background: #fff;
-    width: 300px;
-    border-radius: 16px;
-    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-    cursor: pointer;
-    position: relative;
-  }
-
-  /* Card Hover Effect */
-  .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-  }
-
-  /* Image Styling */
-  .card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    filter: grayscale(20%);
-    transition: filter 0.3s ease;
-  }
-
-  /* Image Hover Effect */
-  .card:hover img {
-    filter: grayscale(0%);
-  }
-
-  /* Text Area */
-  .bottom-part {
-    padding: 20px;
-    text-align: center;
-    background: linear-gradient(145deg, #ffffff, #f1f1f1);
-  }
-
-  .bottom-part b {
-    display: block;
-    font-size: 1.4rem;
-    color: #333;
-    margin-bottom: 8px;
-  }
-
-  .bottom-part small {
-    font-size: 0.9rem;
-    color: #555;
-    line-height: 1.4;
-  }
-
-  /* Button Styling */
-  .desc-btn button {
-    margin-top: 10px;
-    background: linear-gradient(90deg, #ff7a00, #ff1b6b);
-    color: #fff;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    cursor: pointer;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-
-  /* Button Hover Effect */
-  .desc-btn button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 15px rgba(255, 107, 0, 0.8);
-  }
-
-  /* Responsive Layout */
-  @media (max-width: 768px) {
-    .card {
-      width: 100%;
+    /* Container Styling */
+    .card-container {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      padding: 20px;
+      background: linear-gradient(135deg, #1e2a47, #3b8beb);
     }
-  }
 
-  /* Animation on load */
-  [data-aos="zoom-in"] {
-    opacity: 0;
-    transform: scale(0.8);
-    transition: all 0.5s ease-in-out;
-  }
+    /* Card Styling */
+    .card {
+      background: #fff;
+      width: 300px;
+      border-radius: 16px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      position: relative;
+    }
 
-  [data-aos="zoom-in"].aos-animate {
-    opacity: 1;
-    transform: scale(1);
-  }
+    /* Card Hover Effect */
+    .card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+    }
+
+    /* Image Styling */
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      filter: grayscale(20%);
+      transition: filter 0.3s ease;
+    }
+    .nav .container ul+button{
+      display: none;
+    }
+
+    /* Image Hover Effect */
+    .card:hover img {
+      filter: grayscale(0%);
+    }
+
+    /* Text Area */
+    .bottom-part {
+      padding: 20px;
+      text-align: center;
+      background: linear-gradient(145deg, #ffffff, #f1f1f1);
+    }
+
+    .bottom-part b {
+      display: block;
+      font-size: 1.4rem;
+      color: #333;
+      margin-bottom: 8px;
+    }
+
+    .bottom-part small {
+      font-size: 0.9rem;
+      color: #555;
+      line-height: 1.4;
+    }
+
+    /* Button Styling */
+    .desc-btn button {
+      margin-top: 10px;
+      background: linear-gradient(90deg, #ff7a00, #ff1b6b);
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    /* Button Hover Effect */
+    .desc-btn button:hover {
+      transform: scale(1.1);
+      box-shadow: 0 4px 15px rgba(255, 107, 0, 0.8);
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 768px) {
+      .card {
+        width: 100%;
+      }
+    }
+
+    /* Animation on load */
+    [data-aos="zoom-in"] {
+      opacity: 0;
+      transform: scale(0.8);
+      transition: all 0.5s ease-in-out;
+    }
+
+    [data-aos="zoom-in"].aos-animate {
+      opacity: 1;
+      transform: scale(1);
+    }
+    .open-btn {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+    }
     @media screen and (max-width: 578px) {
       .hero {
         height: 100vh !important;
@@ -1150,6 +1165,9 @@
       .nav .container ul {
         display: none;
       }
+      .nav .container ul+button{
+        display: block;
+      }
       .slider-container {
         position: relative;
         width: 100%;
@@ -1171,7 +1189,7 @@
       .event-card {
         width: 370px;
       }
-      .content svg+h2{
+      .content svg + h2 {
         color: #8700d6;
       }
       .event-info {
@@ -1185,6 +1203,9 @@
       .nav .container img {
         top: -15px;
         transform: rotate(1deg);
+      }
+      .card-container {
+        padding: 10px;
       }
 
       .nav.active img {
@@ -1230,10 +1251,15 @@
         padding: 0;
         background-color: rgb(0, 0, 0);
         background: url(https://static.wixstatic.com/media/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg/v1/fill/w_980,h_821,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg);
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
       }
+    }
+   
+
+    .open-btn {
+      z-index: 1;
     }
   </style>
 
@@ -1250,8 +1276,36 @@
           <li><a href="#">Contact</a></li>
           <li><a href="#">Register</a></li>
         </ul>
+       
+        <button class="nav-btn open-btn">
+          <i class="fas fa-bars"></i>
+        </button>
       </div>
     </nav>
+    <div class="nav-ham nav-black">
+      <div class="nav-ham nav-red">
+        <div class="nav-ham nav-white">
+          <button class="nav-btn close-btn">
+            <i class="fas fa-times"></i>
+          </button>
+
+          <img
+            src="./assets//logo/Krivvas title copy-Photoroom[82].png"
+            class="logo sidebar-logo"
+          />
+
+          <ul class="list">
+            <li><a href="#" class="current">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Events</a></li>
+            <li><a href="#">Starnite</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Contact</a></li>
+            <li><a href="#">Register</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
 
     <div class="hero">
       <div class="container">
@@ -1284,7 +1338,11 @@
     </div>
 
     <section class="container content">
-      <svg data-aos="fade-left"  xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
+      <svg
+        data-aos="fade-left"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 1440 320"
+      >
         <path
           fill="#ff5500"
           fill-opacity="1"
@@ -1823,6 +1881,20 @@
         easing: "ease-in-out",
         once: false,
       });
+
+      const open_btn = document.querySelector(".open-btn");
+      const close_btn = document.querySelector(".close-btn");
+      const navHam = document.querySelectorAll(".nav-ham");
+
+      open_btn.addEventListener("click", () => {
+        console.log("btn clicked");
+        navHam.forEach((nav_el) => nav_el.classList.add("visible"));
+      });
+
+      close_btn.addEventListener("click", () => {
+        console.log("bnt again clidk");
+        navHam.forEach((nav_el) => nav_el.classList.remove("visible"));
+      });
     </script>
     <script>
       const nav = document.querySelector(".nav");
@@ -1921,8 +1993,6 @@
 
       gsap.set(slides[0], { opacity: 1, x: 0 });
       setInterval(showNextSlide, 5000);
-
-      
     </script>
   </body>
 </html>
