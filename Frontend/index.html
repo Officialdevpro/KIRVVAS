@@ -96,8 +96,8 @@
       z-index: -2;
     }
     @media screen and (max-width: 578px) {
-      .hero {
-        height: 40vh !important;
+      .hero{
+        height: 100vh !important;
       }
       .hero .container h1 {
         font-size: 20px;
@@ -106,6 +106,13 @@
         display: none;
       }
       .countdown-container {
+        width: 50%;
+      }
+      .countdown-container .box{
+        width: 100px;
+      }
+      .nav .container ul{
+        display: none;
       }
     }
     .hero {
@@ -667,11 +674,7 @@
         margin-top: 20px;
       }
     }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+
 
     .event-info {
       display: flex;
@@ -710,6 +713,7 @@
       .event-info {
         flex-direction: column;
         padding: 20px;
+        
       }
 
       .event-item {
@@ -1012,6 +1016,7 @@
   top: 40px;
   right: 30px;
 }
+
 
 .list {
   list-style-type: none;
