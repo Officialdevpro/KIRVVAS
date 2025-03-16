@@ -22,6 +22,8 @@
       font-family: "Open Sans", sans-serif;
       color: #222;
       padding-bottom: 50px;
+      overflow-x: hidden;
+      overflow-y: scroll;
     }
 
     .container {
@@ -95,26 +97,7 @@
       margin-bottom: 20px;
       z-index: -2;
     }
-    @media screen and (max-width: 578px) {
-      .hero{
-        height: 100vh !important;
-      }
-      .hero .container h1 {
-        font-size: 20px;
-      }
-      .hero .container p {
-        display: none;
-      }
-      .countdown-container {
-        width: 50%;
-      }
-      .countdown-container .box{
-        width: 100px;
-      }
-      .nav .container ul{
-        display: none;
-      }
-    }
+
     .hero {
       background-image: url("../Frontend/2T0A4377-min.jpg");
       background-repeat: no-repeat;
@@ -675,7 +658,6 @@
       }
     }
 
-
     .event-info {
       display: flex;
       justify-content: space-around;
@@ -713,7 +695,6 @@
       .event-info {
         flex-direction: column;
         padding: 20px;
-        
       }
 
       .event-item {
@@ -940,104 +921,201 @@
       overflow: hidden;
     }
 
+    .text {
+      text-transform: uppercase;
+    }
 
-.text {
-  text-transform: uppercase;
-}
+    .logo {
+      width: 200px;
+    }
 
-.logo {
-  width: 200px;
-}
+    .nav-btn {
+      border: none;
+      background-color: transparent;
+      cursor: pointer;
+      font-size: 20px;
+    }
 
-.nav-btn {
-  border: none;
-  background-color: transparent;
-  cursor: pointer;
-  font-size: 20px;
-}
+    .open-btn {
+      position: fixed;
+      top: 10px;
+      left: 10px;
+    }
 
-.open-btn {
-  position: fixed;
-  top: 10px;
-  left: 10px;
-}
+    .nav-ham {
+      position: fixed;
+      top: 1000px;
+      display: none;
+      left: 0;
+      height: 100vh;
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
+    }
 
-.nav-ham {
-  position: fixed;
-  top: 1000px;
-  display: none;
-  left: 0;
-  height: 100vh;
-  transform: translateX(-100%);
-  transition: transform 0.3s ease-in-out;
-}
+    .nav.visible {
+      transform: translateX(0);
+    }
 
-.nav.visible {
-  transform: translateX(0);
-}
+    .nav-black {
+      background-color: rgb(34, 31, 31);
+      width: 60%;
+      max-width: 480px;
+      min-width: 320px;
+      transition-delay: 0.4s;
+    }
 
-.nav-black {
-  background-color: rgb(34, 31, 31);
-  width: 60%;
-  max-width: 480px;
-  min-width: 320px;
-  transition-delay: 0.4s;
-}
+    .nav-black.visible {
+      transition-delay: 0s;
+    }
 
-.nav-black.visible {
-  transition-delay: 0s;
-}
+    .nav-red {
+      background-color: rgb(229, 9, 20);
+      width: 95%;
+      transition-delay: 0.2s;
+    }
 
-.nav-red {
-  background-color: rgb(229, 9, 20);
-  width: 95%;
-  transition-delay: 0.2s;
-}
+    .nav-red.visible {
+      transition-delay: 0.2s;
+    }
 
-.nav-red.visible {
-  transition-delay: 0.2s;
-}
+    .nav-white {
+      background-color: #fff;
+      width: 95%;
+      padding: 40px;
+      position: relative;
+      transition-delay: 0s;
+    }
 
-.nav-white {
-  background-color: #fff;
-  width: 95%;
-  padding: 40px;
-  position: relative;
-  transition-delay: 0s;
-}
+    .nav-white.visible {
+      transition-delay: 0.4s;
+    }
 
-.nav-white.visible {
-  transition-delay: 0.4s;
-}
+    .close-btn {
+      opacity: 0.3;
+      position: absolute;
+      top: 40px;
+      right: 30px;
+    }
 
-.close-btn {
-  opacity: 0.3;
-  position: absolute;
-  top: 40px;
-  right: 30px;
-}
+    .list {
+      list-style-type: none;
+      padding: 0;
+    }
 
+    .list li {
+      margin: 20px 0;
+    }
 
-.list {
-  list-style-type: none;
-  padding: 0;
-}
+    .list li a {
+      color: rgb(34, 31, 31);
+      font-size: 14px;
+      text-decoration: none;
+      text-transform: uppercase;
+    }
 
-.list li {
-  margin: 20px 0;
-}
+    .list ul {
+      list-style-type: none;
+      padding-left: 20px;
+    }
+    @media screen and (max-width: 578px) {
+      .hero {
+        height: 100vh !important;
+      }
+      .hero .container h1 {
+        font-size: 20px;
+      }
+      .hero .container p {
+        display: none;
+      }
+      .countdown-container {
+        width: 100%;
+      }
 
-.list li a {
-  color: rgb(34, 31, 31);
-  font-size: 14px;
-  text-decoration: none;
-  text-transform: uppercase;
-}
+      .hero .container .logo {
+        width: 399px;
+        height: 296px;
+        transform: rotate(1deg);
+      }
+      .countdown-container .countdown {
+        width: 100px;
+        padding: 10px;
+      }
+      .countdown-container .countdown .box {
+        width: 70px;
+        height: 86px;
+        background-color: #666666;
+        font-size: 20px;
+      }
+      .nav .container ul {
+        display: none;
+      }
+      .slider-container {
+        position: relative;
+        width: 100%;
+        /* max-width: 800px; */
+        height: 300px;
+        overflow: hidden;
+        border: 4px solid #fff;
+        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+        /* border-radius: 10px; */
+        
+      }
 
-.list ul {
-  list-style-type: none;
-  padding-left: 20px;
-}
+      .slide h1 {
+        font-size: 18px;
+        margin-bottom: 20px;
+        text-align: center;
+      }
+
+      .event-card{
+        width: 350px;
+      }
+      .event-info{
+        background-color: #613131d6;
+        background: url(https://static.wixstatic.com/media/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg/v1/fill/w_980,h_821,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+      }
+
+      .nav .container img {
+        top: -15px;
+        transform: rotate(1deg);
+      }
+
+      .nav.active img {
+        top: -20px;
+        transform: rotate(1deg);
+      }
+      .nav .container img {
+        width: 236px;
+        height: 92px;
+        position: absolute;
+
+        left: -13px;
+      }
+      .hero .container p {
+        display: block;
+      }
+      .countdown-container .countdown .box {
+        position: relative;
+      }
+      .countdown-container .countdown .box p {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        text-align: center;
+      }
+
+      .nav.active .container {
+        padding: 21px 0;
+      }
+      .slide p {
+        font-size: 16px;
+        text-align: center;
+    }
+    }
   </style>
 
   <body>
@@ -1055,8 +1133,7 @@
         </ul>
       </div>
     </nav>
-    
-    
+
     <div class="hero">
       <div class="container">
         <img class="logo" src="./assets/logo/Krivvas title - Png.png" alt="" />
@@ -1097,6 +1174,10 @@
             initiative organized by our students' Fine Arts Club – Sona Modern
             Theatre.
           </p>
+        </div>
+
+        <div class="slide">
+          <h1>A National Celebration of Art</h1>
           <p>
             More than just a stage for artistic expression, KRIVVAS serves as a
             vibrant melting pot where talent meets tradition, creativity
@@ -1104,7 +1185,6 @@
             unity.
           </p>
         </div>
-
         <div class="slide">
           <h1>A National Celebration of Art</h1>
           <p>
@@ -1112,6 +1192,9 @@
             offering them a unique opportunity to showcase their artistic
             brilliance.
           </p>
+        </div>
+        <div class="slide">
+          <h1>A National Celebration of Art</h1>
           <p>
             Build meaningful connections and immerse yourself in the rich
             tapestry of our nation's diverse heritage.
@@ -1125,6 +1208,9 @@
             opportunity to become cultural ambassadors, fostering inclusivity,
             collaboration, and the spirit of artistic exchange.
           </p>
+        </div>
+        <div class="slide">
+          <h1>Beyond Performance: A Cultural Mission</h1>
           <p>
             Join us in this extraordinary experience and be a part of a movement
             that transcends mere competition—where passion, creativity, and
@@ -1190,7 +1276,7 @@
           <li class="event-card" data-aos="fade-right">
             <div class="front">
               <div class="top-portion">
-                <img src="../img1.png" alt="" />
+                <img src="./assets/events/img1.png" alt="" />
               </div>
               <b class="label">General Events</b>
               <div class="bottom-protion">
@@ -1216,7 +1302,7 @@
           <li class="event-card" data-aos="fade-left">
             <div class="front">
               <div class="top-portion">
-                <img src="../solo.png" alt="" />
+                <img src="./assets/events/solo.png" alt="" />
               </div>
               <b class="label">General Events</b>
               <div class="bottom-protion">
@@ -1242,7 +1328,7 @@
           <li class="event-card" data-aos="zoom-in">
             <div class="front">
               <div class="top-portion">
-                <img src="../fashion.png" alt="" />
+                <img src="./assets/events/fashion.png" alt="" />
               </div>
               <b class="label">General Events</b>
               <div class="bottom-protion">
@@ -1269,7 +1355,7 @@
           <li class="event-card" data-aos="zoom-in">
             <div class="front">
               <div class="top-portion">
-                <img src="../band.png" alt="" />
+                <img src="./assets/events/band.png" alt="" />
               </div>
               <b class="label">General Events</b>
               <div class="bottom-protion">
@@ -1295,7 +1381,7 @@
           <li class="event-card" data-aos="fade-right">
             <div class="front">
               <div class="top-portion">
-                <img src="../photo.png" alt="" />
+                <img src="./assets/events/photo.png" alt="" />
               </div>
               <b class="label">General Events</b>
               <div class="bottom-protion">
@@ -1321,7 +1407,7 @@
           <li class="event-card" data-aos="fade-left">
             <div class="front">
               <div class="top-portion">
-                <img src="../ipl.png" alt="" />
+                <img src="./assets/events/ipl.png" alt="" />
               </div>
               <b class="label">General Events</b>
               <div class="bottom-protion">
@@ -1348,7 +1434,7 @@
           <li class="event-card" data-aos="fade-right">
             <div class="front">
               <div class="top-portion">
-                <img src="../img1.png" alt="" />
+                <img src="./assets/events/img1.png" alt="" />
               </div>
               <b class="label">General Events</b>
               <div class="bottom-protion">
@@ -1373,7 +1459,7 @@
           <li class="event-card" data-aos="fade-left">
             <div class="front">
               <div class="top-portion">
-                <img src="../twoeer.png" alt="" />
+                <img src="./assets/events/twoeer.png" alt="" />
               </div>
               <b class="label">General Events</b>
               <div class="bottom-protion">
@@ -1410,7 +1496,7 @@
           <li class="event-card" data-aos="fade-right">
             <div class="front">
               <div class="top-portion">
-                <img src="../cook.png" alt="" />
+                <img src="./assets/events/cook.png" alt="" />
               </div>
               <b class="label">General Events</b>
               <div class="bottom-protion">
@@ -1447,7 +1533,7 @@
           <li class="event-card" data-aos="fade-left">
             <div class="front">
               <div class="top-portion">
-                <img src="../meme.png" alt="" />
+                <img src="./assets/events/meme.png" alt="" />
               </div>
               <b class="label">General Events</b>
               <div class="bottom-protion">
