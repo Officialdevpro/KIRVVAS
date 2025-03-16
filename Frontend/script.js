@@ -1,104 +1,93 @@
-const text = "KRIVVAS  2025";
-const container = document.getElementById("text");
+const nav = document.querySelector(".nav");
+window.addEventListener("scroll", fixNav);
 
-function animateText() {
-  // Clear previous text
-  container.innerHTML = "";
-
-  // Split the text into spans
-  text.split("").forEach((letter) => {
-    let span = document.createElement("span");
-    span.innerHTML = letter === " " ? "&nbsp;" : letter; // Ensure space is visible
-    span.classList.add("letter");
-    container.appendChild(span);
-  });
-
-  // GSAP Animation
-  gsap.fromTo(
-    ".letter",
-    { opacity: 0, y: 50, scale: 0.5, rotation: 50 },
-    {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      rotation: 1,
-      stagger: 0.1,
-      ease: "back.out(1.7)",
-      onComplete: celebrate,
-    }
-  );
-}
-
-function celebrate() {
-  const count = 200,
-    defaults = {
-      origin: { y: 0.7 },
-    };
-
-  function fire(particleRatio, opts) {
-    confetti(
-      Object.assign({}, defaults, opts, {
-        particleCount: Math.floor(count * particleRatio),
-      })
-    );
+function fixNav() {
+  if (window.scrollY > nav.offsetHeight + 150) {
+    nav.classList.add("active");
+  } else {
+    nav.classList.remove("active");
   }
-
-  fire(0.25, {
-    spread: 26,
-    startVelocity: 55,
-  });
-
-  fire(0.2, {
-    spread: 60,
-  });
-
-  fire(0.35, {
-    spread: 100,
-    decay: 0.91,
-    scalar: 0.8,
-  });
-
-  fire(0.1, {
-    spread: 120,
-    startVelocity: 25,
-    decay: 0.92,
-    scalar: 1.2,
-  });
-
-  fire(0.1, {
-    spread: 120,
-    startVelocity: 45,
-  });
-
-  document.querySelector(".text-container").classList.add("move");
-  document.querySelector(".body").classList.add("ch-style");
-  // document.querySelector(".events-container").style.display = "block";
-  document.querySelector(".slider-container").style.display = "block";
 }
 
-document.querySelector(".text-container").classList.add("move");
-document.querySelector(".body").classList.add("ch-style");
-// document.querySelector(".events-container").style.display = "block";
-document.querySelector(".slider-container").style.display = "block";
+// Set event start date (YYYY, MM-1, DD, HH, MM, SS)
+const eventDate = new Date("2025-04-10T00:00:00").getTime();
 
-// Initial call
-animateText();
-let currentSlide = 0;
-const slides = document.querySelectorAll(".slide");
+function updateCountdown() {
+  const now = new Date().getTime();
+  const timeLeft = eventDate - now;
 
-function showNextSlide() {
-  slides[currentSlide].classList.remove("active");
-  currentSlide = (currentSlide + 1) % slides.length;
-  slides[currentSlide].classList.add("active");
+  if (timeLeft > 0) {
+    let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+    let hours = Math.floor(
+      (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+    );
+    let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
+    let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
+
+    document.getElementById("days").innerText = days;
+    document.getElementById("hours").innerText = hours
+      .toString()
+      .padStart(2, "0");
+    document.getElementById("minutes").innerText = minutes
+      .toString()
+      .padStart(2, "0");
+    document.getElementById("seconds").innerText = seconds
+      .toString()
+      .padStart(2, "0");
+  } else {
+    document.querySelector(".countdown-container h2").innerText =
+      "EVENT STARTED!";
+    document.querySelector(".countdown").style.display = "none";
+  }
 }
 
-setInterval(showNextSlide, 3000);
-// Repeat every 10 seconds
-// setInterval(animateText, 6000);
+// Update countdown every second
+setInterval(updateCountdown, 1000);
+updateCountdown();
 
-function toggleMenu() {
-  const hamburger = document.querySelector(".hamburger");
-  const menu = document.querySelector(".fullscreen-menu");
-  hamburger.classList.toggle("open");
-  menu.classList.toggle("open");
+
+
+
+
+const hero = document.querySelector(".hero");
+
+// Array of images
+const images = [
+"../Frontend/assets/images/2T0A4377-min.jpg",
+"../Frontend/assets/images/8L7A4741-min.jpg",
+"../Frontend/assets/images/8L7A4780-min.jpg",
+"../Frontend/assets/images/bg2-min.jpg",
+
+];
+
+let index = 0;
+
+function changeBackground() {
+index = (index + 1) % images.length; // Loop through images
+hero.style.backgroundImage = `url(${images[index]})`;
 }
+
+// Change image every 5 seconds
+setInterval(changeBackground, 3000);
+
+
+
+let slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showNextSlide() {
+            let previousSlide = currentSlide;
+            currentSlide = (currentSlide + 1) % slides.length;
+
+            gsap.timeline()
+                .to(slides[previousSlide], { opacity: 0, y: currentSlide === 1 ? -100 : 100, duration: 1.2, ease: 'power2.inOut' })
+                .set(slides[previousSlide], { opacity: 0, x: 100 })
+                .fromTo(
+                    slides[currentSlide],
+                    { opacity: 0, x: currentSlide === 0 ? -100 : currentSlide === 1 ? 0 : 100, y: currentSlide === 1 ? -100 : 100 },
+                    { opacity: 1, x: 0, y: 0, duration: 1.5, ease: 'expo.out' }
+                );
+        }
+
+        gsap.set(slides[0], { opacity: 1, x: 0 });
+        setInterval(showNextSlide, 5000);

@@ -1,407 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
-      integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    />
-    <title>Document</title>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KRIVVAS Slider</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
-      body {
-        display: flex;
-        gap: 90px;
-        align-items: center;
-        flex-wrap: wrap;
-        flex-grow: 1;
-      }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #111;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
 
-      .container,
-      .container2,
-      .container3,
-      .container9,
-      .container4,
-      .container5,
-      .container6,
-      .container7,
-      .container8 {
-        position: relative;
-        width: 400px;
-        height: 350px;
-        float: left;
-      }
+        .slider-container {
+            position: relative;
+            width: 80%;
+            max-width: 800px;
+            height: 400px;
+            overflow: hidden;
+            border: 4px solid #fff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
+            border-radius: 10px;
+        }
 
-      .front {
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        position: absolute;
-        transition: all 0.3s ease;
-      }
+        .slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transform: translateX(100%);
+        }
 
-      .front img {
-        width: 100%;
-        height: 100%;
-        border-radius: 10px;
-      }
+        h1 {
+            font-size: 2.5em;
+            margin-bottom: 0.5em;
+        }
 
-      .back {
-        position: absolute;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        text-align: center;
-        z-index: -2;
-
-        box-sizing: border-box;
-      }
-
-      .pname {
-        font-size: 24px;
-        font-weight: bold;
-      }
-
-      .description {
-        margin: 20px 0px;
-      }
-
-      .back-content {
-        padding: 0px 10px;
-        transition: all 0.5s ease;
-        transform: scale(0);
-        opacity: 0;
-      }
-
-      .container:hover .front {
-        width: 150px;
-        height: 150px;
-        left: calc(100% - 75px);
-        top: calc(50% - 75px);
-      }
-
-      .container:hover .front img {
-        border-radius: 100px;
-        box-shadow: 0px 0px 0px 10px white;
-      }
-
-      .container:hover .back-content,
-      .container2:hover .back-content,
-      .container3:hover .back-content,
-      .container4:hover .back-content,
-      .container5:hover .back-content,
-      .container6:hover .back-content,
-      .container9:hover .back-content,
-      .container7:hover .back-content,
-      .container8:hover .back-content {
-        transform: scale(1);
-        opacity: 1;
-      }
-
-      /* image 2 hover effect */
-
-      .container2:hover .front {
-        transform: translateY(-500px);
-        opacity: 0;
-      }
-
-      .container2::after {
-        content: "";
-        top: 200px;
-        position: absolute;
-        bottom: 200px;
-        right: 50px;
-        left: 50px;
-        border-right: 2px solid #333;
-        border-left: 2px solid #333;
-        z-index: -2;
-        transition: all 0.5s ease;
-      }
-
-      .container2::before {
-        content: "";
-        top: 50px;
-        position: absolute;
-        bottom: 50px;
-        right: 200px;
-        left: 200px;
-        border-top: 2px solid #333;
-        border-bottom: 2px solid #333;
-        transition: all 0.5s ease;
-      }
-
-      .container2:hover::after {
-        top: 30px;
-        bottom: 30px;
-      }
-
-      .container2:hover::before {
-        right: 30px;
-        left: 30px;
-      }
-
-      /* image 3 hover effect */
-
-      .container3 .front {
-        transform: rotateY(0deg);
-        transition: all 0.5s ease;
-        transform-origin: left;
-      }
-
-      .container3:hover .front {
-        transform: rotateY(180deg);
-      }
-
-      /* image 4 hover effect */
-
-      .container4 .front {
-        transform: rotate(0deg);
-        transition: all 0.5s ease;
-      }
-
-      .container4:hover .front {
-        transform: rotate(180deg);
-        transition: all 0.5s ease;
-        opacity: 0;
-      }
-
-      .container4::after {
-        content: "";
-        top: 200px;
-        position: absolute;
-        bottom: 200px;
-        right: 30px;
-        left: 30px;
-        border-right: 2px solid #333;
-        border-left: 2px solid #333;
-        z-index: -2;
-        transition: all 0.5s ease;
-      }
-
-      .container4::before {
-        content: "";
-        top: 30px;
-        position: absolute;
-        bottom: 30px;
-        right: 200px;
-        left: 200px;
-        border-top: 2px solid #333;
-        border-bottom: 2px solid #333;
-        transition: all 0.5s ease;
-      }
-
-      .container4:hover::after {
-        top: 50px;
-        bottom: 50px;
-      }
-
-      .container4:hover::before {
-        right: 50px;
-        left: 50px;
-      }
-
-      /* image 5 hover effect */
-
-      .container5 {
-        overflow: hidden;
-      }
-
-      .container5 .back {
-        transition: all 0.2s ease;
-        top: -100%;
-        border: none;
-      }
-
-      .container5:hover .front {
-        top: 100%;
-      }
-
-      .container5:hover .back {
-        border-bottom-left-radius: 50%;
-        border-bottom-right-radius: 50%;
-
-        top: 0;
-      }
-
-      /* hover 6 imager */
-
-      .container6 {
-        overflow: hidden;
-      }
-
-      .container6 .front {
-        transform: skewX(0deg);
-        opacity: 1;
-        transition: transform 0.3s ease, left 0.3s ease 0.3s,
-          opacity 0.3s ease 0.3s;
-      }
-
-      .container6:hover .front {
-        transform: skew(-20deg);
-        left: -100%;
-        opacity: 0;
-      }
-
-      /* hover 7 imager */
-
-      .container7 {
-        overflow: hidden;
-      }
-
-      .container7 .front {
-        transition: all 0.5s ease;
-      }
-      .container7:hover .back-content {
-        transform: translateY(-50px);
-      }
-
-      .container7:hover .front {
-        transform: scale(0.35);
-        top: 90px;
-        box-shadow: 0px 0px 20px white, 0px 0px 0px 20px white,
-          10px 10px 50px white;
-      }
-
-      /* hover 8 */
-      .container8 .back {
-        border-top-right-radius: 50%;
-        border-bottom-left-radius: 50%;
-        transition: all 1s ease;
-      }
-      .container8:hover .front {
-        transform: translateY(-100%) rotateX(720deg);
-        opacity: 0;
-        transition: all 0.5s ease;
-      }
-
-      .container9:hover .front {
-        transform: scale(0);
-      }
-      .container9 .back::before {
-        content: "";
-        position: absolute;
-        top: 50px;
-        left: 50px;
-        width: 100px;
-        height: 100px;
-        border-left-width: 2px solid black;
-        border-bottom-width: 2px;
-      }
-      .app {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-      }
-      .events-container {
-        width: 100%;
-      }
-      * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        list-style: none;
-      }
-      .card-container,
-      .front {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap;
-        gap: 30px;
-      }
-      .front li {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-
-        border-radius: 20px;
-        flex-direction: column;
-        width: 450px;
-        padding: 20px;
-        height: 250px;
-        position: relative;
-        overflow: hidden;
-        transition: border-radius 0.5s ease-in-out;
-        background: url(../volt.jpg);
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center;
-      }
-
-      li .bottom-protion {
-        display: flex;
-        justify-content: start;
-        align-items: start;
-        gap: 10px;
-        position: absolute;
-        left: 20px;
-        bottom: 30px;
-        flex-direction: column;
-        color: #fff;
-        z-index: 1;
-      }
-      .label {
-        position: absolute;
-
-        top: 20px;
-        left: 0;
-        width: 150px;
-        height: 30px;
-        display: flex;
-        justify-content: center;
-        border-top-right-radius: 10px;
-        border-bottom-right-radius: 10px;
-        align-items: center;
-        background-color: #36e60a;
-      }
-      .shadow {
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          to top,
-          rgb(11, 136, 29) 0%,
-          rgba(72, 159, 130, 0.5) 50%,
-          rgba(72, 159, 130, 0) 100%
-        );
-      }
-      .container:hover .label,
-      .container:hover .bottom-protion {
-        display: none;
-      }
+        p {
+            font-size: 1.2em;
+            text-align: center;
+        }
     </style>
-  </head>
-
-  <body>
-    <div class="container">
-      <div class="front">
-        
-      </div>
-      <div class="back">
-        <div class="back-content">
-          <div class="pname">GROUP DANCE</div>
-          <div class="description">Sri Valliappa Auditorium</div>
-          <div class="icons">
-            <i class="fa-brands fa-facebook-f"></i>
-            <i class="fa-brands fa-twitter"></i>
-            <i class="fa-brands fa-whatsapp"></i>m
-          </div>
+</head>
+<body>
+    <div class="slider-container">
+        <div class="slide active">
+            <h1>KRIVVAS: A Spectacular Cultural Fest</h1>
+            <p>
+                KRIVVAS, a spectacular cultural fest and competition, is a dynamic initiative organized by our students' Fine Arts Club – Sona Modern Theatre.
+            </p>
+            <p>
+                More than just a stage for artistic expression, KRIVVAS serves as a vibrant melting pot where talent meets tradition, creativity converges with culture, and boundaries dissolve in the spirit of unity.
+            </p>
         </div>
-      </div>
+
+        <div class="slide">
+            <h1>A National Celebration of Art</h1>
+            <p>
+                This grand celebration brings together students from across India, offering them a unique opportunity to showcase their artistic brilliance.
+            </p>
+            <p>
+                Build meaningful connections and immerse yourself in the rich tapestry of our nation's diverse heritage.
+            </p>
+        </div>
+
+        <div class="slide">
+            <h1>Beyond Performance: A Cultural Mission</h1>
+            <p>
+                Participation in KRIVVAS is more than just a performance—it's an opportunity to become cultural ambassadors, fostering inclusivity, collaboration, and the spirit of artistic exchange.
+            </p>
+            <p>
+                Join us in this extraordinary experience and be a part of a movement that transcends mere competition—where passion, creativity, and culture unite to create unforgettable memories!
+            </p>
+        </div>
     </div>
 
-    <!-- second image hover effect -->
-  </body>
+    <script>
+        let slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+
+        function showNextSlide() {
+            let previousSlide = currentSlide;
+            currentSlide = (currentSlide + 1) % slides.length;
+
+            gsap.timeline()
+                .to(slides[previousSlide], { opacity: 0, y: currentSlide === 1 ? -100 : 100, duration: 1.2, ease: 'power2.inOut' })
+                .set(slides[previousSlide], { opacity: 0, x: 100 })
+                .fromTo(
+                    slides[currentSlide],
+                    { opacity: 0, x: currentSlide === 0 ? -100 : currentSlide === 1 ? 0 : 100, y: currentSlide === 1 ? -100 : 100 },
+                    { opacity: 1, x: 0, y: 0, duration: 1.5, ease: 'expo.out' }
+                );
+        }
+
+        gsap.set(slides[0], { opacity: 1, x: 0 });
+        setInterval(showNextSlide, 5000);
+    </script>
+</body>
 </html>
