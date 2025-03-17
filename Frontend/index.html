@@ -15,1286 +15,18 @@
       crossorigin="anonymous"
     />
   </head>
-  <style>
-    @import url("https://fonts.googleapis.com/css?family=Open+Sans");
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    body {
-      font-family: "Open Sans", sans-serif;
-      color: #222;
-      padding-bottom: 50px;
-      overflow-x: hidden;
-      overflow-y: scroll;
-    }
-
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-    }
-
-    .nav {
-      position: fixed;
-
-      top: 0;
-      left: 0;
-      right: 0;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .nav .container {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 20px 0;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .nav ul {
-      display: flex;
-      list-style-type: none;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .nav a {
-      color: #fff;
-      text-decoration: none;
-      padding: 7px 15px;
-      transition: all 0.3s ease-in-out;
-    }
-
-    .nav.active {
-      background-color: #fff;
-      z-index: 2;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-    }
-
-    .nav.active a {
-      color: #000;
-    }
-
-    .nav.active .container {
-      padding: 27px 0;
-    }
-
-    .nav a.current,
-    .nav a:hover {
-      color: #c0392b;
-      font-weight: bold;
-    }
-
-    .hero {
-      height: 100vh;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      background: rgb(110, 0, 255);
-      background: radial-gradient(
-        circle,
-        rgb(255, 243, 138) 0%,
-        rgb(0 189 71 / 78%) 100%
-      );
-    }
-
-    .hero h1 {
-      font-size: 46px;
-      margin: -20px 0 20px;
-    }
-
-    .hero p {
-      font-size: 20px;
-      letter-spacing: 1px;
-    }
-
-    .content h2,
-    .content h3 {
-      font-size: 150%;
-      margin: 20px 0;
-    }
-
-    .content p {
-      color: #555;
-      line-height: 30px;
-      letter-spacing: 1.2px;
-    }
-    .content,
-    .card-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-    .card-container {
-      flex-direction: row;
-      gap: 20px;
-      flex-wrap: wrap;
-    }
-    .card-container {
-      width: 100%;
-    }
-    .card:hover {
-      box-shadow: 10px 10px 25px #333;
-    }
-
-    .card,
-    .bottom-part {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-    .bottom-part {
-      justify-content: start;
-      align-items: start;
-      gap: 10px;
-    }
-    .desc-btn {
-      width: 100%;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .card {
-      width: 300px;
-      border: 1px solid;
-      padding: 10px;
-    }
-    @media (min-width: 768px) {
-      .button-63 {
-        font-size: 24px;
-        min-width: 196px;
-      }
-    }
-    @media (max-width: 578px) {
-      .text-container {
-        font-size: 40px;
-      }
-    }
-
-    .event-card {
-      position: relative;
-      width: 370px;
-      height: 300px;
-      float: left;
-    }
-
-    .front,
-    .front {
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-      position: absolute;
-      transition: all 0.3s ease;
-    }
-
-    .front .top-portion img,
-    .front .top-portion img {
-      width: 100%;
-      height: 100%;
-    }
-
-    .back {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      background: rgb(110, 0, 255);
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.763) 0%,
-        rgb(131, 74, 235) 100%
-      );
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      z-index: -2;
-
-      box-sizing: border-box;
-    }
-
-    .back-content {
-      padding: 0px 10px;
-      transition: all 0.5s ease;
-      transform: scale(0);
-      opacity: 0;
-    }
-
-    .top-portion {
-      height: 100%;
-    }
-
-    .event-card:hover .front {
-      width: 200px;
-      height: 100px;
-      left: calc(50% - 100px);
-      top: calc(10% - 70px);
-    }
-
-    .event-card:hover .front img,
-    .event-card:hover .front img {
-      box-shadow: 0px 0px 0px 6px white;
-      z-index: 1;
-    }
-
-    .event-card:hover .back-content {
-      transform: scale(1);
-      opacity: 1;
-      position: absolute;
-      bottom: 20px;
-    }
-    .event-card:hover .back {
-      border-radius: 10px;
-      transition: all 0.1s ease;
-    }
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      list-style: none;
-    }
-    .card-event-card,
-    .front,
-    .front {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-    }
-
-    .bottom-protion {
-      display: flex;
-      justify-content: start;
-      align-items: start;
-
-      position: absolute;
-      left: 20px;
-      bottom: 10px;
-      flex-direction: column;
-      color: #fff;
-      z-index: 1;
-    }
-    .label {
-      position: absolute;
-
-      top: 20px;
-      left: 0;
-      width: 150px;
-      height: 30px;
-      display: flex;
-      justify-content: center;
-      border-top-right-radius: 10px;
-      border-bottom-right-radius: 10px;
-      align-items: center;
-      background-color: #e6d00a;
-    }
-    .shadow {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(
-        to top,
-        rgb(94, 11, 136) 0%,
-        rgba(137, 0, 234, 0.5) 40%,
-        rgba(100, 72, 159, 0) 100%
-      );
-    }
-
-    .event-card:hover .label,
-    .event-card:hover .shadow,
-    .event-card:hover .bottom-protion {
-      display: none;
-    }
-
-    .button {
-      padding: 15px 30px;
-      border-radius: 30px;
-      border: 1px solid #fff;
-      position: relative;
-      z-index: 2;
-      transition: color 0.3s linear;
-      overflow: hidden;
-      font-size: 18px;
-      font-weight: bold;
-      font-family: sans-serif;
-    }
-    .button::before {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0%;
-      left: -100%;
-      background-color: rgb(255, 255, 255);
-      transition: all 0.3s linear;
-      z-index: -1;
-    }
-    .button::after {
-      content: "";
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      top: 0%;
-      right: -100%;
-      background-color: rgb(255, 255, 255);
-      transition: all 0.3s linear;
-      z-index: -1;
-    }
-    @keyframes hover {
-      0% {
-        right: -100%;
-      }
-      100% {
-        right: 0;
-      }
-    }
-    .button:hover::before {
-      left: 0%;
-    }
-    .button:hover::after {
-      animation: hover 0.3s linear 0.3s;
-      animation-fill-mode: forwards;
-    }
-    .button:hover {
-      color: #111;
-    } /*# sourceMappingURL=hover3.css.map */
-    .event-container {
-      width: 100%;
-
-      display: flex;
-      padding: 10px;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 30px;
-      row-gap: 50px;
-    }
-    .back-2 {
-      background: rgb(0, 183, 255);
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.763) 0%,
-        rgb(74, 198, 235) 100%
-      ) !important;
-    }
-    .back-3 {
-      background: rgb(110, 0, 255);
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.763) 0%,
-        rgb(235, 122, 74) 100%
-      ) !important;
-    }
-    .back-4 {
-      background: rgb(110, 0, 255);
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.763) 0%,
-        rgb(20, 75, 241) 100%
-      );
-    }
-    .back-5 {
-      background: rgb(110, 0, 255);
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.763) 0%,
-        rgb(235, 74, 74) 100%
-      );
-    }
-    .back-6 {
-      background: rgb(110, 0, 255);
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.763) 0%,
-        rgb(23, 86, 213) 100%
-      );
-    }
-    .back-8 {
-      background: rgb(110, 0, 255);
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.763) 0%,
-        rgb(74, 235, 138) 100%
-      );
-    }
-    .back-9 {
-      background: rgb(110, 0, 255);
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.763) 0%,
-        rgb(229, 114, 42) 100%
-      );
-    }
-    .back-10 {
-      background: rgb(110, 0, 255);
-      background: radial-gradient(
-        circle,
-        rgba(255, 255, 255, 0.763) 0%,
-        rgb(44, 39, 54) 100%
-      );
-    }
-    .shadow-2,
-    .shadow-3,
-    .shadow-4,
-    .shadow-5,
-    .shadow-6,
-    .shadow-7,
-    .shadow-8,
-    .shadow-9,
-    .shadow-10 {
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-    .front .shadow-3 {
-      background: linear-gradient(
-        to top,
-        rgb(20, 19, 41) 0%,
-        rgba(0, 144, 234, 0.5) 40%,
-        rgba(100, 72, 159, 0) 100%
-      ) !important;
-    }
-
-    .event-card:hover .label,
-    .event-card:hover .shadow,
-    .event-card:hover .bottom-protion {
-      display: none;
-    }
-    .event-container {
-      overflow-x: hidden;
-      overflow-y: scroll;
-      scrollbar-width: none;
-    }
-    .events-container {
-      height: 100vh;
-    }
-    .hel {
-      height: 100%;
-      width: 100%;
-      margin-top: 40px;
-      display: flex;
-      justify-content: center;
-      position: relative;
-      background-color: rgb(1, 103, 34);
-    }
-    .event-schedule-container {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      flex-direction: column;
-    }
-    .countdown-container {
-      text-align: center;
-      height: 0px;
-
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    .countdown-container h2 {
-      font-size: 24px;
-      font-weight: bold;
-      margin-bottom: 20px;
-    }
-
-    .countdown {
-      display: flex;
-      gap: 15px;
-      justify-content: center;
-    }
-
-    .box {
-      background: #a7a3a3;
-      padding: 20px;
-      height: 120px;
-      box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-      text-align: center;
-      width: 100px;
-    }
-
-    .box span {
-      font-size: 30px;
-      font-weight: bold;
-      display: block;
-    }
-
-    .box p {
-      font-size: 12px;
-      color: #a7a7a7;
-      margin-top: 5px;
-      text-transform: uppercase;
-    }
-    footer {
-      background-color: #181818;
-      color: white;
-      padding: 10px;
-      position: relative;
-
-      text-align: left;
-      width: 100%;
-    }
-
-    .footer-container {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: space-between;
-      width: 1200px;
-    }
-
-    .footer-section {
-      width: 23%;
-      width: 250px;
-    }
-
-    .brand-name {
-      color: #4a90e2;
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .footer-section h3 {
-      font-size: 18px;
-      margin-bottom: 10px;
-    }
-
-    .footer-section ul {
-      list-style: none;
-    }
-
-    .footer-section ul li {
-      margin: 5px 0;
-    }
-
-    .footer-section ul li a {
-      color: white;
-      text-decoration: none;
-    }
-
-    .footer-section ul li img {
-      width: 40px;
-      height: 40px;
-      border-radius: 5px;
-      margin-right: 10px;
-    }
-
-    .footer-section ul li {
-      display: flex;
-      align-items: center;
-    }
-
-    .footer-section ul li div {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .social-icons a {
-      color: white;
-      font-size: 20px;
-      margin-right: 10px;
-    }
-
-    .footer-bottom {
-      text-align: center;
-      margin-top: 20px;
-      font-size: 14px;
-    }
-
-    .registration-note {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      background-color: #4a90e2;
-      color: white;
-      padding: 10px;
-      border-radius: 8px;
-      font-size: 14px;
-      text-align: center;
-    }
-
-    @media screen and (max-width: 768px) {
-      .footer-container {
-        flex-direction: column;
-        align-items: center;
-        text-align: center;
-      }
-
-      .footer-section {
-        width: 100%;
-      }
-
-      .registration-note {
-        position: static;
-        margin-top: 20px;
-      }
-    }
-
-    .event-info {
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-      background-color: #a193ff;
-      color: white;
-      padding: 40px 20px;
-      flex-wrap: wrap;
-      text-align: center;
-    }
-
-    .event-item {
-      flex: 1;
-      min-width: 250px;
-      max-width: 300px;
-      padding: 20px;
-    }
-
-    .event-item i {
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-
-    .event-item h3 {
-      font-size: 20px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .event-item p {
-      font-size: 14px;
-    }
-
-    @media (max-width: 768px) {
-      .event-info {
-        flex-direction: column;
-        padding: 20px;
-      }
-
-      .event-item {
-        margin-bottom: 20px;
-      }
-    }
-    .event-item img {
-      width: 50px;
-      height: 50px;
-      filter: invert(1);
-    }
-    .guest-container {
-      position: relative;
-      width: 400px;
-      height: 350px;
-      float: left;
-      padding: 5px;
-    }
-
-    .guest-front {
-      width: 100%;
-      height: 100%;
-      top: 0;
-      left: 0;
-
-      position: absolute;
-      transition: all 0.3s ease;
-    }
-
-    .guest-front img {
-      width: 100%;
-      height: 100%;
-      object-position: center;
-      object-fit: cover;
-    }
-
-    .guest-back {
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      z-index: -2;
-
-      box-sizing: border-box;
-    }
-
-    .pname {
-      font-size: 24px;
-      font-weight: bold;
-    }
-
-    .description {
-      margin: 20px 0px;
-    }
-
-    .guest-back-content {
-      padding: 0px 10px;
-      transition: all 0.5s ease;
-      transform: scale(0);
-      opacity: 0;
-    }
-
-    .guest-container:hover .guest-front {
-      width: 150px;
-      height: 150px;
-      left: calc(100% - 75px);
-      top: calc(50% - 75px);
-    }
-
-    .guest-container:hover .guest-front img {
-      border-radius: 100px;
-      box-shadow: 0px 0px 0px 10px white;
-    }
-
-    .guest-container:hover .guest-back-content {
-      transform: scale(1);
-      opacity: 1;
-    }
-    .guest-box {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      width: 100%;
-      flex-direction: column;
-      gap: 20px;
-    }
-    .guest-grid {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-    .gallery-section {
-      padding: 40px 20px;
-    }
-
-    h2 {
-      font-size: 28px;
-      font-weight: bold;
-      margin-bottom: 5px;
-    }
-
-    .sub-text {
-      font-size: 16px;
-      color: #555;
-      margin-bottom: 20px;
-    }
-    .gallery-section {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-direction: column;
-    }
-
-    .gallery-container {
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 20px;
-      padding: 10px;
-    }
-
-    .gallery-item {
-      width: 300px;
-      height: 200px;
-
-      overflow: hidden;
-      border-radius: 5px;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      object-fit: cover;
-      object-position: center;
-      height: 100%;
-
-      display: block;
-      border-radius: 5px;
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .gallery-item img:hover {
-      transform: scale(1.05);
-    }
-    .nav .container img {
-      width: 273px;
-      height: 115px;
-      position: absolute;
-      top: 0px;
-      left: 0;
-    }
-    .nav .container ul {
-      position: absolute;
-      right: 0;
-      top: 35px;
-    }
-
-    .nav.active img {
-      top: -26px;
-    }
-    .nav.active ul {
-      top: 13px;
-    }
-
-    .nav.active .container {
-      padding: 27px 0;
-    }
-    .hero .container .logo {
-      width: 543px;
-      height: 312px;
-    }
-    .box {
-      --mask: conic-gradient(
-          from -45deg at bottom,
-          #0000,
-          #000 1deg 89deg,
-          #0000 90deg
-        )
-        50%/60px 100%;
-      -webkit-mask: var(--mask);
-      mask: var(--mask);
-    }
-    .slider-container {
-      position: relative;
-      width: 80%;
-      max-width: 800px;
-      height: 400px;
-      overflow: hidden;
-
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-      border-radius: 10px;
-    }
-
-    .slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      opacity: 0;
-      transform: translateX(100%);
-    }
-
-    .slide h1 {
-      font-size: 2.5em;
-      margin-bottom: 0.5em;
-    }
-
-    .slide p {
-      font-size: 1.2em;
-      text-align: center;
-    }
-    .event-info {
-      overflow: hidden;
-    }
-
-    @import url("https://fonts.googleapis.com/css?family=Muli&display=swap");
-
-    .text {
-      text-transform: uppercase;
-    }
-
-    .logo {
-      width: 200px;
-    }
-
-    .nav-btn {
-      border: none;
-      background-color: transparent;
-      cursor: pointer;
-      font-size: 20px;
-    }
-
-    .open-btn {
-      position: fixed;
-      top: 10px;
-      left: 10px;
-    }
-
-    .nav-ham {
-      z-index: 1;
-      position: fixed;
-      top: 0;
-      left: 0;
-      height: 100vh;
-      transform: translateX(-100%);
-      transition: transform 0.3s ease-in-out;
-    }
-
-    .nav-ham.visible {
-      transform: translateX(0);
-    }
-
-    .nav-black {
-      background-color: rgb(34, 31, 31);
-      width: 60%;
-      max-width: 480px;
-      min-width: 320px;
-      transition-delay: 0.4s;
-    }
-
-    .nav-black.visible {
-      transition-delay: 0s;
-    }
-
-    .nav-red {
-      background-color: rgb(219, 0, 235);
-      width: 95%;
-      transition-delay: 0.2s;
-    }
-
-    .nav-red.visible {
-      transition-delay: 0.2s;
-    }
-
-    .nav-white {
-      background-color: #fff;
-      width: 95%;
-      padding: 40px;
-      position: relative;
-      transition-delay: 0s;
-    }
-
-    .nav-white.visible {
-      transition-delay: 0.4s;
-    }
-
-    .close-btn {
-      opacity: 0.3;
-      position: absolute;
-      top: 40px;
-      right: 30px;
-    }
-
-    .list {
-      list-style-type: none;
-      padding: 0;
-    }
-
-    .list li {
-      margin: 20px 0;
-    }
-
-    .list li a {
-      color: rgb(34, 31, 31);
-      font-size: 14px;
-      text-decoration: none;
-      text-transform: uppercase;
-    }
-
-    .list ul {
-      list-style-type: none;
-      padding-left: 20px;
-    }
-
-    /* Container Styling */
-    .card-container {
-      display: flex;
-      justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
-      padding: 20px;
-      background: linear-gradient(135deg, #048aff, #8604ff);
-    }
-
-    /* Card Styling */
-    .card {
-      background: #fff;
-      width: 300px;
-      border-radius: 16px;
-      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
-      overflow: hidden;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      cursor: pointer;
-      position: relative;
-    }
-
-    /* Card Hover Effect */
-    .card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
-    }
-
-    /* Image Styling */
-    .card img {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      filter: grayscale(20%);
-      transition: filter 0.3s ease;
-    }
-    .nav .container ul + button {
-      display: none;
-    }
-
-    /* Image Hover Effect */
-    .card:hover img {
-      filter: grayscale(0%);
-    }
-
-    /* Text Area */
-    .bottom-part {
-      padding: 20px;
-      text-align: center;
-      background: linear-gradient(145deg, #ffffff, #f1f1f1);
-    }
-
-    .bottom-part b {
-      display: block;
-      font-size: 1.4rem;
-      color: #333;
-      margin-bottom: 8px;
-    }
-
-    .bottom-part small {
-      font-size: 0.9rem;
-      color: #555;
-      line-height: 1.4;
-    }
-
-    /* Button Styling */
-    .desc-btn button {
-      margin-top: 10px;
-      background: linear-gradient(90deg, #ff7a00, #ff1b6b);
-      color: #fff;
-      border: none;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-size: 0.9rem;
-      cursor: pointer;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    /* Button Hover Effect */
-    .desc-btn button:hover {
-      transform: scale(1.1);
-      box-shadow: 0 4px 15px rgba(255, 107, 0, 0.8);
-    }
-
-    /* Responsive Layout */
-    @media (max-width: 768px) {
-      .card {
-        width: 100%;
-      }
-    }
-
-    /* Animation on load */
-    [data-aos="zoom-in"] {
-      opacity: 0;
-      transform: scale(0.8);
-      transition: all 0.5s ease-in-out;
-    }
-
-    [data-aos="zoom-in"].aos-animate {
-      opacity: 1;
-      transform: scale(1);
-    }
-    .open-btn {
-      position: fixed;
-      top: 10px;
-      right: 10px;
-    }
-
-    @media screen and (max-width: 578px) {
-      .hero {
-        height: 70vh !important;
-        z-index: -1;
-        margin-bottom: 0;
-        border-top-right-radius: 118px;
-      }
-      .hero .container h1 {
-        font-size: 20px;
-      }
-      .hero .container p {
-        display: none;
-      }
-      .countdown-container {
-        width: 100%;
-      }
-
-      .hero .container .logo {
-        width: 399px;
-        height: 296px;
-        transform: rotate(1deg);
-      }
-      .countdown-container .countdown {
-        width: 100px;
-        padding: 10px;
-      }
-      .countdown-container .countdown .box {
-        width: 70px;
-        height: 86px;
-        background-color: #666666;
-        font-size: 20px;
-      }
-      .nav .container ul {
-        display: none;
-      }
-      .nav .container ul + button {
-        display: block;
-      }
-      .slider-container {
-        position: relative;
-        width: 100%;
-        /* max-width: 800px; */
-        height: 240px;
-        overflow: hidden;
-
-        box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
-        /* border-radius: 10px; */
-      }
-
-      .slide h1 {
-        font-size: 18px;
-        margin-bottom: 20px;
-        text-align: center;
-        color: #ff5500;
-      }
-
-      .event-card {
-        width: 370px;
-      }
-      .content svg + h2 {
-        color: #8700d6;
-        margin: -24px 0;
-      }
-      .event-info {
-        background-color: #613131d6;
-        background: url(https://static.wixstatic.com/media/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg/v1/fill/w_980,h_821,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-      }
-      .nav .container ul + button {
-        display: block;
-        display: flex;
-        justify-content: end;
-        align-items: center;
-      }
-      .nav .container img {
-        top: -15px;
-        transform: rotate(1deg);
-      }
-      .card-container {
-        padding: 10px;
-      }
-
-      .nav.active img {
-        top: -20px;
-        transform: rotate(1deg);
-      }
-      .nav .container img {
-        width: 236px;
-        height: 92px;
-        position: absolute;
-
-        left: -13px;
-      }
-      .hero .container p {
-        display: block;
-      }
-      .countdown-container .countdown .box {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: transparent;
-        position: relative;
-        flex-direction: column;
-        mask: none;
-        border: 1px solid white;
-        border-radius: 1px;
-      }
-      .countdown-container .countdown .box p {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        text-align: center;
-      }
-
-      .nav.active .container {
-        padding: 21px 0;
-      }
-      .slide p {
-        font-size: 16px;
-        text-align: center;
-      }
-      .gallery-container {
-        width: 100%;
-      }
-      .gallery-container .gallery-item {
-        width: 100%;
-      }
-      .gallery-section {
-        width: 100%;
-        padding: 0;
-        background-color: rgb(0, 0, 0);
-        background: url(https://static.wixstatic.com/media/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg/v1/fill/w_980,h_821,al_c,q_85,usm_0.33_1.00_0.00,enc_avif,quality_auto/11062b_bc12126e841b46afaab4b81994fb9639f000.jpg);
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-      }
-    }
-
-    .open-btn {
-      z-index: 1;
-    }
-    .slider-container {
-      position: relative;
-      width: 100%;
-      height: 300px;
-      overflow: hidden;
-    }
-
-    .slide {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      opacity: 0;
-      transform: translateX(100%);
-      transition: opacity 1s ease, transform 1s ease;
-    }
-
-    .slide.active {
-      opacity: 1;
-      transform: translateX(0);
-      z-index: 1;
-    }
-  </style>
 
   <body>
     <nav class="nav">
       <div class="container">
         <img src="./assets/logo/Krivvas title - Png.png" alt="" />
-        <ul>
+        <ul class="ham-menu">
           <li><a href="#" class="current">Home</a></li>
-          <li><a href="#">About</a></li>
-          <li><a href="#">Events</a></li>
-          <li><a href="#">Starnite</a></li>
-          <li><a href="#">Gallery</a></li>
+          <li><a href="#about-section">About</a></li>
+          <li><a href="#events-section">Events</a></li>
+          <li><a href="#starnite-section">Starnite</a></li>
+          <li><a href="#gallery-section">Gallery</a></li>
           <li><a href="#">Contact</a></li>
           <li><a href="#">Register</a></li>
         </ul>
@@ -1316,12 +48,12 @@
             class="logo sidebar-logo"
           />
 
-          <ul class="list">
+          <ul class="list ham-menu" >
             <li><a href="#" class="current">Home</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="#">Events</a></li>
-            <li><a href="#">Starnite</a></li>
-            <li><a href="#">Gallery</a></li>
+            <li><a href="#about-section">About</a></li>
+            <li><a href="#events-section">Events</a></li>
+            <li><a href="#starnite-section">Starnite</a></li>
+            <li><a href="#gallery-section">Gallery</a></li>
             <li><a href="#">Contact</a></li>
             <li><a href="#">Register</a></li>
           </ul>
@@ -1363,10 +95,10 @@
       </div>
     </div>
 
-    <section class="container content">
+    <section id="about-section" class="container content">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
-          fill="#00b938b6"
+          fill="rgb(4, 0, 255)"
           fill-opacity="1"
           d="M0,224L40,192C80,160,160,96,240,74.7C320,53,400,75,480,112C560,149,640,203,720,208C800,213,880,171,960,133.3C1040,96,1120,64,1200,74.7C1280,85,1360,139,1400,165.3L1440,192L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
         ></path>
@@ -1425,13 +157,287 @@
           </p>
         </div>
       </div>
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
-        <path
-          fill=""
-          fill-opacity="1"
-          d="M0,96L40,128C80,160,160,224,240,245.3C320,267,400,245,480,208C560,171,640,117,720,112C800,107,880,149,960,186.7C1040,224,1120,256,1200,245.3C1280,235,1360,181,1400,154.7L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
-        ></path>
-      </svg>
+      
+     
+      <div class="event-schedule-container" id="events-section">
+        <h2>EVENT SCHEDULES</h2>
+
+        <div class="event-container">
+          <li class="event-card" data-aos="fade-right">
+            <div class="front">
+              
+              <b class="label">General Events</b>
+              <div class="bottom-protion">
+                <h2>Group Dance</h2>
+                <p>Groovista</p>
+              </div>
+              <div class="shadow"></div>
+            </div>
+            <div class="back">
+              <div class="back-content">
+                <p>
+                  Get ready to groove! Groovista is an ultimate group dance
+                  battle, feel the rhythm, synchronize with your team and dazzle
+                  the audience!
+                </p>
+                <div class="btn">
+                  <button class="button">Show More</button>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="event-card" data-aos="fade-left">
+            <div class="front">
+              
+              <b class="label">General Events</b>
+              <div class="bottom-protion">
+                <h2>Solo Dance</h2>
+                <p>Rhythmic Canvas</p>
+              </div>
+              <div class="shadow"></div>
+            </div>
+            <div class="back back-2">
+              <div class="back-content">
+                <p>
+                  Unleash your soul through movements! Rhythmic Canvas is a solo
+                  dance event where dancers mesmerize the audience with unique
+                  style and energy. Feel the music, own the stage!
+                </p>
+                <div class="btn">
+                  <button class="button">Show More</button>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="event-card" data-aos="zoom-in">
+            <div class="front">
+             
+              <b class="label">General Events</b>
+              <div class="bottom-protion">
+                <h2>Fashion Show</h2>
+                <p>Runway Reverie</p>
+              </div>
+              <div class="shadow"></div>
+            </div>
+            <div class="back back-3">
+              <div class="back-content">
+                <p>
+                  Show off your style! Runway Reverie is a fashion extravaganza
+                  where elegance meets confidence. A dazzling display of your
+                  cutting-edge fashion and captivating designs. Walk the ramp
+                  and own the spotlight.
+                </p>
+                <div class="btn">
+                  <button class="button">Show More</button>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="event-card" data-aos="zoom-in">
+            <div class="front">
+              
+              <b class="label">General Events</b>
+              <div class="bottom-protion">
+                <h2>Battle of Bands</h2>
+                <p>Symphony Fest</p>
+              </div>
+              <div class="shadow"></div>
+            </div>
+            <div class="back back-4">
+              <div class="back-content">
+                <p>
+                  Let the music roar! Symphony Fest is the epic Battle of Bands
+                  where passion ignites performance! Show off your skills, jam
+                  with your band, and win the crowd.
+                </p>
+                <div class="btn">
+                  <button class="button">Show More</button>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="event-card" data-aos="fade-right">
+            <div class="front">
+             
+              <b class="label">General Events</b>
+              <div class="bottom-protion">
+                <h2>Photography</h2>
+                <p>Frozen Frames</p>
+              </div>
+              <div class="shadow"></div>
+            </div>
+            <div class="back back-5">
+              <div class="back-content">
+                <p>
+                  Preserve the beauty of now! Frozen Frames is the photography
+                  event where art meets perspective. A fusion of vision, art,
+                  and storytelling. Lock the moment in a frame!
+                </p>
+                <div class="btn">
+                  <button class="button">Show More</button>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="event-card" data-aos="fade-left">
+            <div class="front">
+             
+              <b class="label">General Events</b>
+              <div class="bottom-protion">
+                <h2>IPL Auction</h2>
+                <p>Cricket Carnival</p>
+              </div>
+              <div class="shadow"></div>
+            </div>
+            <div class="back back-6">
+              <div class="back-content">
+                <p>
+                  Get ready to bid! Experience the excitement of the IPL auction
+                  where strategy meets sportsmanship. Craft your approach, bid,
+                  and build your dream team in this high-stakes cricket
+                  showdown!
+                </p>
+                <div class="btn">
+                  <button class="button">Show More</button>
+                </div>
+              </div>
+            </div>
+          </li>
+
+          <li class="event-card" data-aos="fade-right">
+            <div class="front">
+              
+              <b class="label">General Events</b>
+              <div class="bottom-protion">
+                <h2>Brain Busters</h2>
+                <p>Mind Masquerade</p>
+              </div>
+              <div class="shadow"></div>
+            </div>
+            <div class="back back-7">
+              <div class="back-content">
+                <p>
+                  Challenge your intellect! Mind Masquerade is the quiz event
+                  where knowledge meets cleverness. Crack the puzzles and
+                  showcase your genius in this battle of wits!
+                </p>
+                <div class="btn">
+                  <button class="button">Show More</button>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="event-card" data-aos="fade-left">
+            <div class="front">
+             
+              <b class="label">General Events</b>
+              <div class="bottom-protion">
+                <h2>Tower Building</h2>
+                <p>Artisan Heights</p>
+              </div>
+              <div
+                class="shadow"
+                class="shadow shadwo-2"
+                style="
+                  background: linear-gradient(
+                    to top,
+                    rgb(1, 103, 34) 0%,
+                    rgba(75, 188, 98, 0.858) 40%,
+                    rgba(13, 0, 68, 0) 100%
+                  );
+                "
+              ></div>
+            </div>
+            <div class="back back-8">
+              <div class="back-content">
+                <p>
+                  Build your masterpiece! Artisan Heights is the tower building
+                  event where architecture meets innovation to conquer the
+                  heights. Engineer, build, and defy gravity as you construct
+                  the tallest and strongest marvel.
+                </p>
+                <div class="btn">
+                  <button class="button">Show More</button>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="event-card" data-aos="fade-right">
+            <div class="front">
+              
+              <b class="label">General Events</b>
+              <div class="bottom-protion">
+                <h2>Fireless Cooking</h2>
+                <p>Flavours Unleashed</p>
+              </div>
+              <div
+                class="shadow"
+                class="shadow shadwo-2"
+                style="
+                  background: linear-gradient(
+                    to top,
+                    rgba(239, 115, 57, 0.71) 0%,
+                    rgba(225, 125, 10, 0.462) 40%,
+                    rgba(13, 0, 68, 0) 100%
+                  );
+                "
+              ></div>
+            </div>
+            <div class="back back-9">
+              <div class="back-content">
+                <p>
+                  Savor the taste, skip the flames! Flavors Unleashed is the
+                  fireless cooking event where creativity meets cuisine. Cook
+                  with passion, plate with perfection, and impress every taste
+                  bud!
+                </p>
+                <div class="btn">
+                  <button class="button">Show More</button>
+                </div>
+              </div>
+            </div>
+          </li>
+          <li class="event-card" data-aos="fade-left">
+            <div class="front">
+              
+              <b class="label">General Events</b>
+              <div class="bottom-protion">
+                <h2>Mime</h2>
+                <p>Silent Spectacle</p>
+              </div>
+              <div
+                class="shadow"
+                class="shadow shadwo-2"
+                style="
+                  background: linear-gradient(
+                    to top,
+                    rgba(0, 0, 0, 0.725) 0%,
+                    rgba(0, 0, 0, 0.718) 40%,
+                    rgba(13, 0, 68, 0) 100%
+                  );
+                "
+              ></div>
+            </div>
+            <div class="back back-10">
+              <div class="back-content">
+                <p>
+                  Express beyond speech! Silent Spectacle is the mime event
+                  where expression meets emotion. Convey, captivate, and perform
+                  wordlessly where the words fade and expression remains...
+                </p>
+                <div class="btn">
+                  <button class="button">Show More</button>
+                </div>
+              </div>
+            </div>
+          </li>
+        </div>
+      </div>
       <div class="card-container">
         <div class="card" data-aos="zoom-in">
           <img
@@ -1482,305 +488,6 @@
           </div>
         </div>
       </div>
-      <div class="event-schedule-container">
-        <h2>EVENT SCHEDULES</h2>
-
-        <div class="event-container">
-          <li class="event-card" data-aos="fade-right">
-            <div class="front">
-              <div class="top-portion">
-                <img src="./assets/events/img1.png" alt="" />
-              </div>
-              <b class="label">General Events</b>
-              <div class="bottom-protion">
-                <h2>Group Dance</h2>
-                <p>Groovista</p>
-              </div>
-              <div class="shadow"></div>
-            </div>
-            <div class="back">
-              <div class="back-content">
-                <p>
-                  Get ready to groove! Groovista is an ultimate group dance
-                  battle, feel the rhythm, synchronize with your team and dazzle
-                  the audience!
-                </p>
-                <div class="btn">
-                  <button class="button">Show More</button>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li class="event-card" data-aos="fade-left">
-            <div class="front">
-              <div class="top-portion">
-                <img src="./assets/events/solo.png" alt="" />
-              </div>
-              <b class="label">General Events</b>
-              <div class="bottom-protion">
-                <h2>Solo Dance</h2>
-                <p>Rhythmic Canvas</p>
-              </div>
-              <div class="shadow"></div>
-            </div>
-            <div class="back back-2">
-              <div class="back-content">
-                <p>
-                  Unleash your soul through movements! Rhythmic Canvas is a solo
-                  dance event where dancers mesmerize the audience with unique
-                  style and energy. Feel the music, own the stage!
-                </p>
-                <div class="btn">
-                  <button class="button">Show More</button>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li class="event-card" data-aos="zoom-in">
-            <div class="front">
-              <div class="top-portion">
-                <img src="./assets/events/fashion.png" alt="" />
-              </div>
-              <b class="label">General Events</b>
-              <div class="bottom-protion">
-                <h2>Fashion Show</h2>
-                <p>Runway Reverie</p>
-              </div>
-              <div class="shadow"></div>
-            </div>
-            <div class="back back-3">
-              <div class="back-content">
-                <p>
-                  Show off your style! Runway Reverie is a fashion extravaganza
-                  where elegance meets confidence. A dazzling display of your
-                  cutting-edge fashion and captivating designs. Walk the ramp
-                  and own the spotlight.
-                </p>
-                <div class="btn">
-                  <button class="button">Show More</button>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li class="event-card" data-aos="zoom-in">
-            <div class="front">
-              <div class="top-portion">
-                <img src="./assets/events/band.png" alt="" />
-              </div>
-              <b class="label">General Events</b>
-              <div class="bottom-protion">
-                <h2>Battle of Bands</h2>
-                <p>Symphony Fest</p>
-              </div>
-              <div class="shadow"></div>
-            </div>
-            <div class="back back-4">
-              <div class="back-content">
-                <p>
-                  Let the music roar! Symphony Fest is the epic Battle of Bands
-                  where passion ignites performance! Show off your skills, jam
-                  with your band, and win the crowd.
-                </p>
-                <div class="btn">
-                  <button class="button">Show More</button>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li class="event-card" data-aos="fade-right">
-            <div class="front">
-              <div class="top-portion">
-                <img src="./assets/events/photo.png" alt="" />
-              </div>
-              <b class="label">General Events</b>
-              <div class="bottom-protion">
-                <h2>Photography</h2>
-                <p>Frozen Frames</p>
-              </div>
-              <div class="shadow"></div>
-            </div>
-            <div class="back back-5">
-              <div class="back-content">
-                <p>
-                  Preserve the beauty of now! Frozen Frames is the photography
-                  event where art meets perspective. A fusion of vision, art,
-                  and storytelling. Lock the moment in a frame!
-                </p>
-                <div class="btn">
-                  <button class="button">Show More</button>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li class="event-card" data-aos="fade-left">
-            <div class="front">
-              <div class="top-portion">
-                <img src="./assets/events/ipl.png" alt="" />
-              </div>
-              <b class="label">General Events</b>
-              <div class="bottom-protion">
-                <h2>IPL Auction</h2>
-                <p>Cricket Carnival</p>
-              </div>
-              <div class="shadow"></div>
-            </div>
-            <div class="back back-6">
-              <div class="back-content">
-                <p>
-                  Get ready to bid! Experience the excitement of the IPL auction
-                  where strategy meets sportsmanship. Craft your approach, bid,
-                  and build your dream team in this high-stakes cricket
-                  showdown!
-                </p>
-                <div class="btn">
-                  <button class="button">Show More</button>
-                </div>
-              </div>
-            </div>
-          </li>
-
-          <li class="event-card" data-aos="fade-right">
-            <div class="front">
-              <div class="top-portion">
-                <img src="./assets/events/img1.png" alt="" />
-              </div>
-              <b class="label">General Events</b>
-              <div class="bottom-protion">
-                <h2>Brain Busters</h2>
-                <p>Mind Masquerade</p>
-              </div>
-              <div class="shadow"></div>
-            </div>
-            <div class="back back-7">
-              <div class="back-content">
-                <p>
-                  Challenge your intellect! Mind Masquerade is the quiz event
-                  where knowledge meets cleverness. Crack the puzzles and
-                  showcase your genius in this battle of wits!
-                </p>
-                <div class="btn">
-                  <button class="button">Show More</button>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="event-card" data-aos="fade-left">
-            <div class="front">
-              <div class="top-portion">
-                <img src="./assets/events/twoeer.png" alt="" />
-              </div>
-              <b class="label">General Events</b>
-              <div class="bottom-protion">
-                <h2>Tower Building</h2>
-                <p>Artisan Heights</p>
-              </div>
-              <div
-                class="shadow"
-                class="shadow shadwo-2"
-                style="
-                  background: linear-gradient(
-                    to top,
-                    rgb(1, 103, 34) 0%,
-                    rgba(75, 188, 98, 0.858) 40%,
-                    rgba(13, 0, 68, 0) 100%
-                  );
-                "
-              ></div>
-            </div>
-            <div class="back back-8">
-              <div class="back-content">
-                <p>
-                  Build your masterpiece! Artisan Heights is the tower building
-                  event where architecture meets innovation to conquer the
-                  heights. Engineer, build, and defy gravity as you construct
-                  the tallest and strongest marvel.
-                </p>
-                <div class="btn">
-                  <button class="button">Show More</button>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="event-card" data-aos="fade-right">
-            <div class="front">
-              <div class="top-portion">
-                <img src="./assets/events/cook.png" alt="" />
-              </div>
-              <b class="label">General Events</b>
-              <div class="bottom-protion">
-                <h2>Fireless Cooking</h2>
-                <p>Flavours Unleashed</p>
-              </div>
-              <div
-                class="shadow"
-                class="shadow shadwo-2"
-                style="
-                  background: linear-gradient(
-                    to top,
-                    rgba(239, 115, 57, 0.71) 0%,
-                    rgba(225, 125, 10, 0.462) 40%,
-                    rgba(13, 0, 68, 0) 100%
-                  );
-                "
-              ></div>
-            </div>
-            <div class="back back-9">
-              <div class="back-content">
-                <p>
-                  Savor the taste, skip the flames! Flavors Unleashed is the
-                  fireless cooking event where creativity meets cuisine. Cook
-                  with passion, plate with perfection, and impress every taste
-                  bud!
-                </p>
-                <div class="btn">
-                  <button class="button">Show More</button>
-                </div>
-              </div>
-            </div>
-          </li>
-          <li class="event-card" data-aos="fade-left">
-            <div class="front">
-              <div class="top-portion">
-                <img src="./assets/events/meme.png" alt="" />
-              </div>
-              <b class="label">General Events</b>
-              <div class="bottom-protion">
-                <h2>Mime</h2>
-                <p>Silent Spectacle</p>
-              </div>
-              <div
-                class="shadow"
-                class="shadow shadwo-2"
-                style="
-                  background: linear-gradient(
-                    to top,
-                    rgba(0, 0, 0, 0.725) 0%,
-                    rgba(0, 0, 0, 0.718) 40%,
-                    rgba(13, 0, 68, 0) 100%
-                  );
-                "
-              ></div>
-            </div>
-            <div class="back back-10">
-              <div class="back-content">
-                <p>
-                  Express beyond speech! Silent Spectacle is the mime event
-                  where expression meets emotion. Convey, captivate, and perform
-                  wordlessly where the words fade and expression remains...
-                </p>
-                <div class="btn">
-                  <button class="button">Show More</button>
-                </div>
-              </div>
-            </div>
-          </li>
-        </div>
-      </div>
 
       <!-- FontAwesome for Icons -->
       <script
@@ -1807,14 +514,10 @@
         <p>Hurry up! Register and Have fun</p>
       </div>
 
-      <div class="event-item" data-aos="fade-left">
-        <img src="./assets/icons//coffee.png" alt="" />
-        <h3>Free Lunch & Snacks</h3>
-        <p>Don’t miss it</p>
-      </div>
+     
     </div>
 
-    <div class="gallery-section">
+    <!-- <div id="gallery-section" class="gallery-section">
       <h2>OUR EVENT GALLERY</h2>
 
       <div class="gallery-container">
@@ -1873,7 +576,7 @@
           />
         </div>
       </div>
-    </div>
+    </div> -->
 
     <!-- <footer>
       <div class="footer-container">
@@ -1897,6 +600,7 @@
         </div>
       </div>
     </footer> -->
+   
     <script>
       AOS.init({
         duration: 500,
@@ -1918,64 +622,7 @@
         navHam.forEach((nav_el) => nav_el.classList.remove("visible"));
       });
     </script>
-    <script>
-      const nav = document.querySelector(".nav");
-      window.addEventListener("scroll", fixNav);
-
-      function fixNav() {
-        if (window.scrollY > nav.offsetHeight + 150) {
-          nav.classList.add("active");
-        } else {
-          nav.classList.remove("active");
-        }
-      }
-
-      // Set event start date (YYYY, MM-1, DD, HH, MM, SS)
-      const eventDate = new Date("2025-04-10T00:00:00").getTime();
-
-      function updateCountdown() {
-        const now = new Date().getTime();
-        const timeLeft = eventDate - now;
-
-        if (timeLeft > 0) {
-          let days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-          let hours = Math.floor(
-            (timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          );
-          let minutes = Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60));
-          let seconds = Math.floor((timeLeft % (1000 * 60)) / 1000);
-
-          document.getElementById("days").innerText = days;
-          document.getElementById("hours").innerText = hours
-            .toString()
-            .padStart(2, "0");
-          document.getElementById("minutes").innerText = minutes
-            .toString()
-            .padStart(2, "0");
-          document.getElementById("seconds").innerText = seconds
-            .toString()
-            .padStart(2, "0");
-        } else {
-          document.querySelector(".countdown-container h2").innerText =
-            "EVENT STARTED!";
-          document.querySelector(".countdown").style.display = "none";
-        }
-      }
-
-      // Update countdown every second
-      setInterval(updateCountdown, 1000);
-      updateCountdown();
-
-      let slides = document.querySelectorAll(".slide");
-      let currentSlide = 0;
-
-      function showNextSlide() {
-        slides[currentSlide].classList.remove("active");
-        currentSlide = (currentSlide + 1) % slides.length;
-        slides[currentSlide].classList.add("active");
-      }
-
-      setInterval(showNextSlide, 5000);
-    </script>
+    <script src="./script.js"></script>
+    
   </body>
 </html>
