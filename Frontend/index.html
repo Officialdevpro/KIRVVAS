@@ -16,7 +16,6 @@
     />
   </head>
 
-
   <body>
     <nav class="nav">
       <div class="container">
@@ -48,7 +47,7 @@
             class="logo sidebar-logo"
           />
 
-          <ul class="list ham-menu" >
+          <ul class="list ham-menu">
             <li><a href="#" class="current">Home</a></li>
             <li><a href="#about-section">About</a></li>
             <li><a href="#events-section">Events</a></li>
@@ -157,16 +156,14 @@
           </p>
         </div>
       </div>
-      
-     
+
       <div class="event-schedule-container" id="events-section">
         <h2>EVENT SCHEDULES</h2>
 
         <div class="event-container">
           <li class="event-card" data-aos="fade-right">
             <div class="front">
-              
-              <b class="label">General Events</b>
+              <b class="label">Team Event</b>
               <div class="bottom-protion">
                 <h2>Group Dance</h2>
                 <p>Groovista</p>
@@ -189,8 +186,7 @@
 
           <li class="event-card" data-aos="fade-left">
             <div class="front">
-              
-              <b class="label">General Events</b>
+              <b class="label">Solo Event</b>
               <div class="bottom-protion">
                 <h2>Solo Dance</h2>
                 <p>Rhythmic Canvas</p>
@@ -213,8 +209,7 @@
 
           <li class="event-card" data-aos="zoom-in">
             <div class="front">
-             
-              <b class="label">General Events</b>
+              <b class="label">Solo Event</b>
               <div class="bottom-protion">
                 <h2>Fashion Show</h2>
                 <p>Runway Reverie</p>
@@ -238,8 +233,7 @@
 
           <li class="event-card" data-aos="zoom-in">
             <div class="front">
-              
-              <b class="label">General Events</b>
+              <b class="label">Team Event</b>
               <div class="bottom-protion">
                 <h2>Battle of Bands</h2>
                 <p>Symphony Fest</p>
@@ -262,8 +256,7 @@
 
           <li class="event-card" data-aos="fade-right">
             <div class="front">
-             
-              <b class="label">General Events</b>
+              <b class="label">Solo Event</b>
               <div class="bottom-protion">
                 <h2>Photography</h2>
                 <p>Frozen Frames</p>
@@ -286,8 +279,7 @@
 
           <li class="event-card" data-aos="fade-left">
             <div class="front">
-             
-              <b class="label">General Events</b>
+              <b class="label">Team Event</b>
               <div class="bottom-protion">
                 <h2>IPL Auction</h2>
                 <p>Cricket Carnival</p>
@@ -311,8 +303,7 @@
 
           <li class="event-card" data-aos="fade-right">
             <div class="front">
-              
-              <b class="label">General Events</b>
+              <b class="label">Team Event</b>
               <div class="bottom-protion">
                 <h2>Brain Busters</h2>
                 <p>Mind Masquerade</p>
@@ -334,8 +325,7 @@
           </li>
           <li class="event-card" data-aos="fade-left">
             <div class="front">
-             
-              <b class="label">General Events</b>
+              <b class="label">Team Event</b>
               <div class="bottom-protion">
                 <h2>Tower Building</h2>
                 <p>Artisan Heights</p>
@@ -369,8 +359,7 @@
           </li>
           <li class="event-card" data-aos="fade-right">
             <div class="front">
-              
-              <b class="label">General Events</b>
+              <b class="label">Team Event</b>
               <div class="bottom-protion">
                 <h2>Fireless Cooking</h2>
                 <p>Flavours Unleashed</p>
@@ -404,8 +393,7 @@
           </li>
           <li class="event-card" data-aos="fade-left">
             <div class="front">
-              
-              <b class="label">General Events</b>
+              <b class="label">Team Event</b>
               <div class="bottom-protion">
                 <h2>Mime</h2>
                 <p>Silent Spectacle</p>
@@ -513,8 +501,6 @@
         <h3>15+ Events</h3>
         <p>Hurry up! Register and Have fun</p>
       </div>
-
-     
     </div>
 
     <!-- <div id="gallery-section" class="gallery-section">
@@ -600,29 +586,14 @@
         </div>
       </div>
     </footer> -->
-   
+
     <script>
       AOS.init({
         duration: 500,
         easing: "ease-in-out",
         once: false,
       });
-
-      const open_btn = document.querySelector(".open-btn");
-      const close_btn = document.querySelector(".close-btn");
-      const navHam = document.querySelectorAll(".nav-ham");
-
-      open_btn.addEventListener("click", () => {
-        console.log("btn clicked");
-        navHam.forEach((nav_el) => nav_el.classList.add("visible"));
-      });
-
-      close_btn.addEventListener("click", () => {
-        console.log("bnt again clidk");
-        navHam.forEach((nav_el) => nav_el.classList.remove("visible"));
-      });
     </script>
     <script src="./script.js"></script>
-    
   </body>
 </html>

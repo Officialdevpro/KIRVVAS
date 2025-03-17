@@ -52,3 +52,18 @@ hamMenus.forEach((menu) => {
     });
   });
 });
+
+
+const open_btn = document.querySelector(".open-btn");
+const close_btn = document.querySelector(".close-btn");
+const navHam = document.querySelectorAll(".nav-ham");
+
+open_btn.addEventListener("click", () => {
+  console.log("btn clicked");
+  navHam.forEach((nav_el) => nav_el.classList.add("visible"));
+});
+
+close_btn.addEventListener("click", () => {
+  console.log("bnt again clidk");
+  navHam.forEach((nav_el) => nav_el.classList.remove("visible"));
+});
