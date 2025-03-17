@@ -42,7 +42,7 @@ function showNextSlide() {
   slides[currentSlide].classList.add("active");
 }
 
-setInterval(showNextSlide, 5000);
+setInterval(showNextSlide, 3000);
 
 let hamMenus = document.querySelectorAll(".ham-menu");
 hamMenus.forEach((menu) => {

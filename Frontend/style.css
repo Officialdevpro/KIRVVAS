@@ -1,10 +1,12 @@
 
-@import url("https://fonts.googleapis.com/css?family=Open+Sans");
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
 
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  font-family: "Outfit", sans-serif;
 }
 html {
   scroll-behavior: smooth; /* Enables smooth scrolling */
@@ -13,12 +15,10 @@ html {
 body {
   font-family: "Open Sans", sans-serif;
   color: #222;
-  padding-bottom: 50px;
+
   overflow-x: hidden;
   overflow-y: scroll;
 }
-
-
 
 .nav {
   position: fixed;
@@ -80,11 +80,7 @@ body {
   text-align: center;
   position: relative;
   background: rgb(110, 0, 255);
-  background: radial-gradient(
-    circle,
-    rgb(0, 157, 255) 0%,
-    rgb(4, 0, 255) 100%
-  );
+  background: radial-gradient(circle, rgb(0, 157, 255) 0%, rgb(4, 0, 255) 100%);
 }
 
 .hero h1 {
@@ -100,7 +96,6 @@ body {
 .content h2,
 .content h3 {
   font-size: 150%;
- 
 }
 
 .content p {
@@ -170,15 +165,11 @@ body {
   float: left;
 }
 
-
-
-
-
 .back {
- display: flex;
-justify-content: center;
-align-items: center;
- width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
   height: 100%;
   background: rgb(110, 0, 255);
   background: radial-gradient(
@@ -196,31 +187,24 @@ align-items: center;
 }
 
 .back-content {
-    display: flex
-;
-    padding: 0px 10px;
-    transition: all 0.5s ease;
-    transform: scale(0);
-    opacity: 0;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    gap: 31px;
+  display: flex;
+  padding: 0px 10px;
+  transition: all 0.5s ease;
+  transform: scale(0);
+  opacity: 0;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 31px;
 }
 
 .top-portion {
   height: 100%;
 }
 
-
-
-
-
 .event-card:hover .back-content {
   transform: scale(1);
   opacity: 1;
- 
-  
 }
 .event-card:hover .back {
   border-radius: 10px;
@@ -256,7 +240,6 @@ align-items: center;
   color: #fff;
   z-index: 1;
 }
-
 
 .label {
   position: absolute;
@@ -326,7 +309,6 @@ align-items: center;
   transition: all 0.3s linear;
   z-index: -1;
 }
-
 
 @keyframes hover {
   0% {
@@ -511,7 +493,7 @@ align-items: center;
   font-weight: bold;
   display: block;
 }
-.bottom-protion{
+.bottom-protion {
   width: 100%;
   gap: 10px;
 }
@@ -636,7 +618,7 @@ footer {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background-color: #a193ff;
+  background-color: #474170;
   color: white;
   padding: 40px 20px;
   flex-wrap: wrap;
@@ -1003,7 +985,7 @@ h2 {
   gap: 20px;
   flex-wrap: wrap;
   padding: 20px;
-  background: linear-gradient(135deg, #048aff, #8604ff);
+ 
 }
 
 /* Card Styling */
@@ -1109,7 +1091,6 @@ h2 {
     height: 70vh !important;
     z-index: -1;
     margin-bottom: 0;
-    
   }
   .hero .container h1 {
     font-size: 20px;
@@ -1271,15 +1252,23 @@ h2 {
 }
 
 @media (max-width: 830px) {
-   .container ul{
+  .container ul {
     display: none;
-   }
-   .open-btn{
+  }
+  .open-btn {
     display: flex;
-   }
-   .nav .container ul + button {
+  }
+  .nav .container ul + button {
     display: flex;
     justify-content: end;
     align-items: center;
   }
+}
+@media (min-width: 800px) {
+  .slider-container {
+    height: 250px;
   }
+  #about-section h2{
+    margin: 0;
+  }
+}
