@@ -97,7 +97,11 @@
       text-align: center;
       position: relative;
       background: rgb(110, 0, 255);
-      background: radial-gradient(circle, rgb(255, 243, 138) 0%, rgb(219, 0, 235) 100%);
+      background: radial-gradient(
+        circle,
+        rgb(255, 243, 138) 0%,
+        rgb(0 189 71 / 78%) 100%
+      );
     }
 
     .hero h1 {
@@ -877,7 +881,7 @@
       max-width: 800px;
       height: 400px;
       overflow: hidden;
-      border: 4px solid #fff;
+
       box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
       border-radius: 10px;
     }
@@ -957,7 +961,7 @@
     }
 
     .nav-red {
-      background-color:rgb(219, 0, 235);
+      background-color: rgb(219, 0, 235);
       width: 95%;
       transition-delay: 0.2s;
     }
@@ -1034,7 +1038,6 @@
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
     }
 
-   
     /* Image Styling */
     .card img {
       width: 100%;
@@ -1117,8 +1120,10 @@
 
     @media screen and (max-width: 578px) {
       .hero {
-        height: 100vh !important;
+        height: 70vh !important;
+        z-index: -1;
         margin-bottom: 0;
+        border-top-right-radius: 118px;
       }
       .hero .container h1 {
         font-size: 20px;
@@ -1155,9 +1160,9 @@
         position: relative;
         width: 100%;
         /* max-width: 800px; */
-        height: 300px;
+        height: 240px;
         overflow: hidden;
-        border: 4px solid #fff;
+
         box-shadow: 0 0 15px rgba(255, 255, 255, 0.5);
         /* border-radius: 10px; */
       }
@@ -1174,6 +1179,7 @@
       }
       .content svg + h2 {
         color: #8700d6;
+        margin: -24px 0;
       }
       .event-info {
         background-color: #613131d6;
@@ -1182,7 +1188,12 @@
         background-position: center;
         background-size: cover;
       }
-
+      .nav .container ul + button {
+        display: block;
+        display: flex;
+        justify-content: end;
+        align-items: center;
+      }
       .nav .container img {
         top: -15px;
         transform: rotate(1deg);
@@ -1209,13 +1220,12 @@
         display: flex;
         justify-content: center;
         align-items: center;
-       background-color: transparent;
+        background-color: transparent;
         position: relative;
         flex-direction: column;
         mask: none;
         border: 1px solid white;
         border-radius: 1px;
-        
       }
       .countdown-container .countdown .box p {
         position: absolute;
@@ -1250,6 +1260,27 @@
     }
 
     .open-btn {
+      z-index: 1;
+    }
+    .slider-container {
+      position: relative;
+      width: 100%;
+      height: 300px;
+      overflow: hidden;
+    }
+
+    .slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transform: translateX(100%);
+      transition: opacity 1s ease, transform 1s ease;
+    }
+
+    .slide.active {
+      opacity: 1;
+      transform: translateX(0);
       z-index: 1;
     }
   </style>
@@ -1300,7 +1331,11 @@
 
     <div class="hero">
       <div class="container">
-        <img class="logo" src="./assets/logo/Krivvas title copy-Photoroom[82].png" alt="" />
+        <img
+          class="logo"
+          src="./assets/logo/Krivvas title copy-Photoroom[82].png"
+          alt=""
+        />
         <div class="countdown-container">
           <div class="countdown">
             <div class="box">
@@ -1329,13 +1364,9 @@
     </div>
 
     <section class="container content">
-      <svg
-        data-aos="fade-left"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 1440 320"
-      >
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
-          fill="rgb(219, 0, 235)"
+          fill="#00b938b6"
           fill-opacity="1"
           d="M0,224L40,192C80,160,160,96,240,74.7C320,53,400,75,480,112C560,149,640,203,720,208C800,213,880,171,960,133.3C1040,96,1120,64,1200,74.7C1280,85,1360,139,1400,165.3L1440,192L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
         ></path>
@@ -1935,36 +1966,15 @@
       setInterval(updateCountdown, 1000);
       updateCountdown();
 
-      
-
       let slides = document.querySelectorAll(".slide");
       let currentSlide = 0;
 
       function showNextSlide() {
-        let previousSlide = currentSlide;
+        slides[currentSlide].classList.remove("active");
         currentSlide = (currentSlide + 1) % slides.length;
-
-        gsap
-          .timeline()
-          .to(slides[previousSlide], {
-            opacity: 0,
-            y: currentSlide === 1 ? -100 : 100,
-            duration: 1.2,
-            ease: "power2.inOut",
-          })
-          .set(slides[previousSlide], { opacity: 0, x: 100 })
-          .fromTo(
-            slides[currentSlide],
-            {
-              opacity: 0,
-              x: currentSlide === 0 ? -100 : currentSlide === 1 ? 0 : 100,
-              y: currentSlide === 1 ? -100 : 100,
-            },
-            { opacity: 1, x: 0, y: 0, duration: 1.5, ease: "expo.out" }
-          );
+        slides[currentSlide].classList.add("active");
       }
 
-      gsap.set(slides[0], { opacity: 1, x: 0 });
       setInterval(showNextSlide, 5000);
     </script>
   </body>
