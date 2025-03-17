@@ -18,10 +18,7 @@ body {
   overflow-y: scroll;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
+
 
 .nav {
   position: fixed;
@@ -178,10 +175,10 @@ body {
 
 
 .back {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
+ display: flex;
+justify-content: center;
+align-items: center;
+ width: 100%;
   height: 100%;
   background: rgb(110, 0, 255);
   background: radial-gradient(
@@ -199,34 +196,31 @@ body {
 }
 
 .back-content {
-  padding: 0px 10px;
-  transition: all 0.5s ease;
-  transform: scale(0);
-  opacity: 0;
+    display: flex
+;
+    padding: 0px 10px;
+    transition: all 0.5s ease;
+    transform: scale(0);
+    opacity: 0;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 31px;
 }
 
 .top-portion {
   height: 100%;
 }
 
-.event-card:hover .front {
-  width: 200px;
-  height: 100px;
-  left: calc(50% - 100px);
-  top: calc(10% - 70px);
-}
 
-.event-card:hover .front img,
-.event-card:hover .front img {
-  box-shadow: 0px 0px 0px 6px white;
-  z-index: 1;
-}
+
+
 
 .event-card:hover .back-content {
   transform: scale(1);
   opacity: 1;
-  position: absolute;
-  bottom: 20px;
+ 
+  
 }
 .event-card:hover .back {
   border-radius: 10px;
