@@ -89,10 +89,6 @@
     }
 
     .hero {
-      background-image: url("../Frontend/2T0A4377-min.jpg");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: bottom center;
       height: 100vh;
       color: #fff;
       display: flex;
@@ -100,24 +96,8 @@
       align-items: center;
       text-align: center;
       position: relative;
-      margin-bottom: 20px;
-      z-index: -2;
-    }
-
-    .hero {
-      background-image: url("../Frontend/2T0A4377-min.jpg");
-      background-repeat: no-repeat;
-      background-size: cover;
-      background-position: bottom center;
-      height: 100vh;
-      color: #fff;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      text-align: center;
-      position: relative;
-      margin-bottom: 20px;
-      transition: background-image 1s ease-in-out; /* Smooth transition */
+      background: rgb(110, 0, 255);
+      background: radial-gradient(circle, rgb(255, 243, 138) 0%, rgb(219, 0, 235) 100%);
     }
 
     .hero h1 {
@@ -540,7 +520,7 @@
     }
 
     .box {
-      background: #4d4c4c;
+      background: #a7a3a3;
       padding: 20px;
       height: 120px;
       box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
@@ -1032,7 +1012,7 @@
       gap: 20px;
       flex-wrap: wrap;
       padding: 20px;
-      background: linear-gradient(135deg, #1e2a47, #3b8beb);
+      background: linear-gradient(135deg, #048aff, #8604ff);
     }
 
     /* Card Styling */
@@ -1053,6 +1033,7 @@
       box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
     }
 
+   
     /* Image Styling */
     .card img {
       width: 100%;
@@ -1061,7 +1042,7 @@
       filter: grayscale(20%);
       transition: filter 0.3s ease;
     }
-    .nav .container ul+button{
+    .nav .container ul + button {
       display: none;
     }
 
@@ -1132,6 +1113,7 @@
       top: 10px;
       right: 10px;
     }
+
     @media screen and (max-width: 578px) {
       .hero {
         height: 100vh !important;
@@ -1165,7 +1147,7 @@
       .nav .container ul {
         display: none;
       }
-      .nav .container ul+button{
+      .nav .container ul + button {
         display: block;
       }
       .slider-container {
@@ -1223,7 +1205,16 @@
         display: block;
       }
       .countdown-container .countdown .box {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+       background-color: transparent;
         position: relative;
+        flex-direction: column;
+        mask: none;
+        border: 1px solid white;
+        border-radius: 1px;
+        
       }
       .countdown-container .countdown .box p {
         position: absolute;
@@ -1256,7 +1247,6 @@
         background-size: cover;
       }
     }
-   
 
     .open-btn {
       z-index: 1;
@@ -1276,7 +1266,7 @@
           <li><a href="#">Contact</a></li>
           <li><a href="#">Register</a></li>
         </ul>
-       
+
         <button class="nav-btn open-btn">
           <i class="fas fa-bars"></i>
         </button>
@@ -1309,7 +1299,7 @@
 
     <div class="hero">
       <div class="container">
-        <img class="logo" src="./assets/logo/Krivvas title - Png.png" alt="" />
+        <img class="logo" src="./assets/logo/Krivvas title copy-Photoroom[82].png" alt="" />
         <div class="countdown-container">
           <div class="countdown">
             <div class="box">
@@ -1344,7 +1334,7 @@
         viewBox="0 0 1440 320"
       >
         <path
-          fill="#ff5500"
+          fill="rgb(219, 0, 235)"
           fill-opacity="1"
           d="M0,224L40,192C80,160,160,96,240,74.7C320,53,400,75,480,112C560,149,640,203,720,208C800,213,880,171,960,133.3C1040,96,1120,64,1200,74.7C1280,85,1360,139,1400,165.3L1440,192L1440,0L1400,0C1360,0,1280,0,1200,0C1120,0,1040,0,960,0C880,0,800,0,720,0C640,0,560,0,480,0C400,0,320,0,240,0C160,0,80,0,40,0L0,0Z"
         ></path>
@@ -1405,7 +1395,7 @@
       </div>
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
         <path
-          fill="#ff5500"
+          fill=""
           fill-opacity="1"
           d="M0,96L40,128C80,160,160,224,240,245.3C320,267,400,245,480,208C560,171,640,117,720,112C800,107,880,149,960,186.7C1040,224,1120,256,1200,245.3C1280,235,1360,181,1400,154.7L1440,128L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
         ></path>
@@ -1944,25 +1934,7 @@
       setInterval(updateCountdown, 1000);
       updateCountdown();
 
-      const hero = document.querySelector(".hero");
-
-      // Array of images
-      const images = [
-        "../Frontend/2T0A4377-min.jpg",
-        "../Frontend/8L7A4741-min.jpg",
-        "../Frontend/8L7A4780-min.jpg",
-        "../Frontend/bg2-min.jpg",
-      ];
-
-      let index = 0;
-
-      function changeBackground() {
-        index = (index + 1) % images.length; // Loop through images
-        hero.style.backgroundImage = `url(${images[index]})`;
-      }
-
-      // Change image every 5 seconds
-      setInterval(changeBackground, 3000);
+      
 
       let slides = document.querySelectorAll(".slide");
       let currentSlide = 0;
